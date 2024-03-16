@@ -1,0 +1,50 @@
+Azure AZ-900
+-------------
+https://www.udemy.com/course/azure-certification-az-900-azure-fundamentals/learn/lecture/26525596#overview
+
+One of the primary reason we go for Azure(or any cloud) is to be able to deploy our application in multiple regions around the world. 
+	-> The concept that helps to achieve above is known as Regions and Availability Zones in Azure.
+	
+Where do you deploy applications to in the cloud? 
+--------------------------------------------------
+	-> That is Virtual Machines, azure service that helps to create virtual machines is "Azure Virtual Machines".
+
+In section 3, we will learn about how to create virtual machines? installing softwares? create multiple virtual machines? distribute the load between them?
+
+Creating virtual machines? load balancers to balance the load between them is manual process, that we would make automatic with the help "Managed Compute Services" in Section 4.
+	-> we would learn the fundamentals of IaaS, PaaS, SaaS and also some more important Managed Compute Services provided by Azure.
+		-> Azure App Services
+		-> Azure Container Instances
+		-> Serverless with Azure Functions
+		-> Shared responsibility model in Azure
+		
+In Section 5 - We would learn about different storage options provided by Azure - "Azure Storage"
+Section 6 - Azure Databases (RDBMS, NoSQL) and related services provided by Azure.
+
+Section 7 - Azure Networks(Azure virtual network, Firewall,subnets, Network security groups) and other services offered by Azure and some more best practices.
+
+Section 8 - Organizing Azure Resource groups.
+
+Before cloud challenges;
+------------------------
+	-> Peak load provisioning (Buy infrastructure for peak load(that we think max load))
+	-> But always it would not be running in peak load, then huge resources setup would be sitting idle that time, most of the times during holidays, festivals it would be used peak load.
+	-> Needs ahead of planning (as we would not know when our app would reach high and peak usage among customers) , hard to guess the future?
+	-> When infra setup done, we need to employ infra maintenance team (would be costly for a startup to afford)		
+		
+
+Think about Cloud?
+-------------------
+	-> You don't need to pre-setup for Peak load, you will just need to increase the resource as the load increases, it goes vice versa when load decrease. CAPITAL EXPENSE changes to VARIABLE EXPENSE. Helps on-demand resource provisioning.
+	-> which obviously helps the problem that we don't need to plan way ahead. Stop guessing the future.
+	->  Go global in minutes. (just on a click app is deployed to multiple regions around the world!!!)
+	-> Stop running and maintaining Data Centers.
+	
+Microsoft Azure
+----------------
+		It provides 200+ services. 
+		Proved it as reliable, secure, cost-effective.
+	
+	
+	
+	
