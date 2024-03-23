@@ -45,6 +45,90 @@ Microsoft Azure
 		It provides 200+ services. 
 		Proved it as reliable, secure, cost-effective.
 	
+Account created, not sure but I was not able to create free account, then finally created account with Pay-as-you-go with gowthamn91@outlook.com.
+
+										"Beware of it"
+										
+WHY REGIONS and ZONES?
+=======================
+Imagine I have an application hosted in a Data Center in LONDON.
+
+What would be the challenges?
+	1. Slow access for the user from other parts of the world (like Sydney, Mumbai, Chennai, NY etc.,) This is called a HIGH LATENCY.
+	2. Right now our application is deployed in only data center, what if the data center crashes? Application goes down and unavailable. (LOW AVAILABILITY)
+
+How do we solve these problems?
+--------------------------------
+	-> For 2nd problem, if we add one more data center in LONDON REGION, if one data center crashes, the other one can still serve the application. (SOLVES #2).
+		-> But what if the entire London region goes down, then it is still a problem to be solved?
+		-> To resolve this, lets add more region to our application, we deploy application to another region, this time lets assume "MUMBAI REGION", this makes our application to be HIGH AVAILABLE. if LONDON goes down, MUMBAI REGION would still serve our application users.
+		-> Actually this approach would solve the first problem as well in a way if we deploy our applications in multiple regions around the world, so that all the users would be served by the Data Center closer to them which means HIGH LATENCY also resolved.
+
+ADVANTAGES OF REGIONS AND AVAILABILITY ZONES
+---------------------------------------------
+	From the previous examples and details, it should be prettty clear that we have the below advantages of using Regions and Zones.
+		1. High Availability
+		2. Low Latency
+		3. Global foot print for any start up to reach global within minutes and serve users across world.
+		4. Helps to adhere to local government regulations, like we don't want to take any users data out of the particular country and store in that respective data center itself.
+
+With Availability zones;
+-------------------------
+		1. High Availability and Fault tolerance within the region.
+		 	
+	Mostly Availability zones will have independent power, networking & connectivity to ensure failure in one data center does not affect the other data center (zone), hence any failure would make the other data center to serve the application with out much issue.
+
+		Point to note is; not all the regions have availability zones, some has upto 3 AZ, some have nothing as well.
 	
-	
-	
+AZURE VIRTUAL MACHINES:
+=======================
+	Where do we deploy our applications? Typically in a Server, but in case of Cloud, we deploy it in Virtual Server.
+	How do we provision Virtual Server? It is with the help service called - Azure Virtual Machine.
+	In different Cloud Providers it is termed differently (like Compute Engine in GCP, EC2 in AWS). EC2 - Elastic Compute Cloud.
+
+	Features offered by Azure Virtual Machines Service:
+	---------------------------------------------------
+		-> Create and Manage life cycle of the VM instances.
+		-> Load Balancing and Auto Scaling for multiple VM instances based on the users.
+		-> Manage Network Connectivity and Configuration for VMs which helps us to connect with VM and access applications hosted in it.
+		-> Attach Storage to your VM instances.
+		
+Creating a VM from Portal:
+---------------------------
+			Search for Virtual Machine Resource and create.
+			-> While creating VM we will need to create Resource Group under which this VM should go in.
+			-> We also select image of OS.
+			-> And the Region where this VM should be deployed to. There are many Regions will be listed, we can choose one based on the needs.
+			-> Then the size of the VM (RAM, CPU, Data Disc that can be attached to)
+			
+			-> Also select an Http(80) inbound port so that when we install web application to this VM, through this port we will access our application.
+			
+			-> Review + Create -> runs validation -> once successful -> click Create button.
+			
+OK. I was able to create a VM and connect to it via SSH (Secure Shell) with help of "bash" there is an icon which opens Cloud Shell in Azure Portal. 
+
+I had to first upload my private key file downloaded from the Cloud Shell.
+Then I had to follow some commands, it was also listed in the Portal. Below are sample.		
+			
+Here are some of the commands we would execute in the next few steps:
+
+You can refer back to this if you have problems. Good Luck.
+
+chmod 400 my-first-vm_key.pem
+ssh -i YOUR_KEY_PATH azureuser@PUBLIC_IP_ADDRESS (ssh -i my-first-vm_key.pem azureuser@52.190.58.93)
+
+ 
+apt-get -y update
+apt-get -y install nginx
+ 
+echo "Hello World"
+echo "Hello World" > /var/www/html/index.html
+echo "Hello World from in28minutes" > /var/www/html/index.html
+ 
+hostname
+echo "$(hostname)"
+echo "Hello World from $(hostname)"
+echo "Hello World from $(hostname)" > /var/www/html/index.html
+
+
+			
