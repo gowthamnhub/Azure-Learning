@@ -130,5 +130,13 @@ echo "$(hostname)"
 echo "Hello World from $(hostname)"
 echo "Hello World from $(hostname)" > /var/www/html/index.html
 
+KEY CONCEPTS OF VIRTUAL MACHINES:
+---------------------------------
+	1. Image - OS of the VM
+	2. VM Family - if the VM is General Purpose/High Performance Compute/Memory Optimized
+	3. VM Size - VM of same family can have different sizes like (no. of vCPU, RAM size, Disk storage and more.
+	4. Disks - Attach Virtual Disk similar to HDD attach to laptop - this is done while creating a VM, we have a tab named "Disks" there we can create or attach an existing disk to the VM - A Data disk can also be created from Disks resource.
+		-> There are different storage types available (Premium SSD, Standard SSD, Ultra Disk, Standard HDD).
+
 
 			
