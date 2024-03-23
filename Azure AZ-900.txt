@@ -117,9 +117,9 @@ You can refer back to this if you have problems. Good Luck.
 chmod 400 my-first-vm_key.pem
 ssh -i YOUR_KEY_PATH azureuser@PUBLIC_IP_ADDRESS (ssh -i my-first-vm_key.pem azureuser@52.190.58.93)
 
- 
-apt-get -y update
-apt-get -y install nginx
+sudo su - before running the install command, make it a super user. 
+apt-get -y update - updates packages
+apt-get -y install nginx - installs nginx and launch it.
  
 echo "Hello World"
 echo "Hello World" > /var/www/html/index.html
@@ -139,4 +139,29 @@ KEY CONCEPTS OF VIRTUAL MACHINES:
 		-> There are different storage types available (Premium SSD, Standard SSD, Ultra Disk, Standard HDD).
 
 
-			
+
+Installed a web server to our VM - my-first-vm - nginx
+
+nginx - is a popular web server similar to IIS (mainly for windows based apps), but nginx is light weight and cross platform supported.		
+
+After running the command - apt-get -y install nginx - it installs and launches the webserver.
+Post that if I hit the public IP: http://52.190.58.93/ - I am able to see the message whatever I echo from console.
+
+	echo "Hello World" > /var/www/html/index.html - Displays "Hello World" in browser.
+	
+	One wonderful thing is I am able to open this page from my mobile as well. Thats Fantastic!!!!!!	
+									POWER OF THE CLOUD!!!!!!!!!!!!!!!!!!!!
+	
+Now instead of doing these installation of nginx manually, we can have it automatically done on creation of the VM, we need to provide the above script that I add once below;
+	
+		"	
+			#!/bin/sh - to mark it as bash script
+			sudo su 
+			apt-get -y update
+			apt-get -y install nginx
+			echo "Welcome to Gowthaman's VM $(hostname)" > /var/www/html/index.html
+		"	
+
+Then on creation it automatically installs nginx and launches it. May need to wait for few mins before launching the public IP address to check the message from browser.	
+
+	
