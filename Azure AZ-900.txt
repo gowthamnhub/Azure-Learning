@@ -164,4 +164,24 @@ Now instead of doing these installation of nginx manually, we can have it automa
 
 Then on creation it automatically installs nginx and launches it. May need to wait for few mins before launching the public IP address to check the message from browser.	
 
+When we want to increase availability for the application?
+-----------------------------------------------------------
+	When we have only one VM instance running, the availability may depend on the hardware or disk that we use, for instance;
+				-> Premium SSD or ultra disk - 99.9%
+				-> Standard SSD Managed Disk - 99.5%
+				-> Standard HDD Managed Disk - 95%
 	
+	If we need more availability, we can have two or more instances of VM running in Same Availability Sets	(grouping of resources based on Fault Domain and Update Domain)
+		Fault Domain: The area of the data center which uses same power source and network Switch.
+						It talks about physical boundary for the resource/instances so that the resources are spread across multiple fault domains to avoid any particular fault domain's failure does not affect all the instances and help us with high availability.
+						
+		Update Domain:
+					  It mainly talks about logical grouping of resources based on the rolling out of the updates.
+					When application is undergoing update process, not all the instances in the	
+					update domain goes simultaneously, it goes through one by one which helps us in high availability when one update domain goes update process, the other instances in another update domain keeps serving the users.
+					
+	When needed even more availability, we need to have two or more instances of VM running in different Availability Zones in the same region: it can provide us about 99.99% of availability (four 9s) not so easy to achieve but most of the online apps aim for this.
+
+Then to delete the VMs Created before going to next step:
+---------------------------------------------------------
+	Go to the respective VM - my-first-vm -> Delete -> Select all associated resource types -> (OS, Network interface, IP addresses)  
