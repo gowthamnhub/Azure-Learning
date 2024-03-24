@@ -1,5 +1,5 @@
 Azure AZ-900
--------------
+=============
 https://www.udemy.com/course/azure-certification-az-900-azure-fundamentals/learn/lecture/26525596#overview
 
 One of the primary reason we go for Azure(or any cloud) is to be able to deploy our application in multiple regions around the world. 
@@ -185,3 +185,54 @@ When we want to increase availability for the application?
 Then to delete the VMs Created before going to next step:
 ---------------------------------------------------------
 	Go to the respective VM - my-first-vm -> Delete -> Select all associated resource types -> (OS, Network interface, IP addresses)  
+	
+VIRTUAL MACHINE SCALE SET:
+===========================
+  When we want to create and manage multiple VMs(Identical or VMs of different types) , VMSS is the Azure tool helps us doing that.
+	-> We know when we have multiple VM instances running, the availability of our application increases, and when we have distributed VMs across fault domains, update domains, the availability goes even higher, and when it is distributed across multiple AZs then it is even more higher availability.	
+	-> Exactly VMSS helps us in this, since it automatically distributes the VM instances across fault domains, update domains.
+	-> That helps high availability during any hardware failures or maintenance events.	
+	-> Scaling: We can configure manual or auto-scaling to ensure the VM instances scale in or scale out based on the load. It obviously helps in managing cost effectively.
+	-> Also helps us setting up the Load balancing for the VM instances and help managing the load efficiently by not overloading any particular Virtual Machine.
+	
+Have created a Virtual Machine Scale Set (vm-scale-set-1)
+	Able to see 2 instances created.
+	it also has created a Load Balancer.
+	
+	When we do curl IpAddressOfLB - we can notice it does round robin of passing request to two instances and gets response.
+			
+			"curl 57.151.52.221" (LB IP)
+			
+	We can also do manual scaling from VMSS by adding number of instances to be added to the scale set.
+	Once we add and save, it automatically creates the instances and we can see it in Instances screen as well.
+	May take a few mins, post that curl command we can see the request goes to newly created VMs as well.
+
+Static IP Address:
+-------------------
+	One of the features of Virtual Machine, what is the need for static IP Address?
+	We know when we create a VM, we can have public IP address created which are basically incur charges per hour, but one thing to be noticed is when we stop the VM and start it again, we can see this time new IP address created other than what was created before, this is because when we created a VM, it must have been selected as dynamic
+
+    But for me whatever VMs I created it had only static IP Assignment. so it does not get changed for any time stop or restart.
+	
+	Since these IP address are charged per hour, best practice is to release it when it is not used.
+	
+Similar to the above, there are below features as well;
+
+Azure Monitoring - For monitoring the VMs with different metrics.
+
+Dedicated Host - Physical VMs in the host would be particular for a single customer. Otherwise A single host can have multiple VMs and those VMs can be for different customer applications, Azure would still ensure the VMs are having enough security measures and isolated so that there won't be any insecure access, still the VMs are part of the same hardware/resource.
+
+If suppose we need to have a dedicated host for our servers(VMs) then we can go for dedicated host.	
+
+Azure Spot Virtual Machines 
+----------------------------
+
+	-> These are mainly for workloads which are fault tolerant and are non mission critical.
+Azure Spot VMs gets allocated based on the market capacity and users specification, and also to notice whenever there demand arises Azure can withdraw the VM and give only 30s of notice time.
+
+Reservations:
+--------------
+	We can reserve resources ahead of time for next 1 to 3 years as well with discounted price.
+	
+	
+	
