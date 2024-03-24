@@ -234,5 +234,49 @@ Reservations:
 --------------
 	We can reserve resources ahead of time for next 1 to 3 years as well with discounted price.
 	
+Designing Good Solutions with VMs:
+----------------------------------
+	When designing solutions in Azure, several factors need to be thought through;
+		Availability 
+		-------------
+				-> whenever users try to access our application, it is available for expected use.
+						-> Achieved via Availability Sets, Scale Sets, Availability zones
+						
+		Scalability
+        ------------
+				-> when the demand grows performance of our app should not go down, it should be able to be served with out any interruption. 
+					 -> It is achieved by two ways; Vertical, Horizontal.
+					 
+			Vertical:
+			---------	
+				=> Increases the size of the VM to serve more, but it has a limit that only to certain limit it can be increased. (RAM, Disk, CPUs).
+					-> It can be more expensive, buying a heavy memory or CPU can cost high.
+			
+			Horizontal: 
+			-----------
+				=> This is the thing we had seen earlier as well with Scale sets, by adding more instances of Identical or varied configuration. And we can use Load Balancer to route the requests to VMs based on the load.
+					-> This is the most preferred one. But to notice it involves additional infrastructure as it needs Scaling Sets, Load Balancers as well.
+					-> With this we get the availability as well, as any VM failing, app would still be served from other VMs, thats not the case with Vertical Scaling.					
+					
+		Resilience:
+		-----------
+				=> Ability of System to provide acceptable behavior when one or more parts of the system fails.
+				   Achieved via Scale sets and Load balancers.
+				   
+		Geo-distribution:
+		-----------------
+				=> Distribute application across regions and zones (Scale Sets and Load balancers)
+				
+		Disaster Recovery:
+		------------------
+				=> How to keep systems running in case of disaster (Site Recovery)
+				
+		Managing Costs:
+		---------------
+				=> With help of Auto Scaling (Elasticity), Reservations, Spot Instances 
+					
+		Security:
+		---------
+				=> Secure your VMs - (Dedicated Hosts)
 	
 	
