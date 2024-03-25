@@ -270,6 +270,7 @@ Designing Good Solutions with VMs:
 		Disaster Recovery:
 		------------------
 				=> How to keep systems running in case of disaster (Site Recovery)
+					-> We can use site recovery to configure secondary region and whenever there is a problem with primary region, would have performed disaster recovery and VM would be copied over to secondary region.
 				
 		Managing Costs:
 		---------------
@@ -279,4 +280,34 @@ Designing Good Solutions with VMs:
 		---------
 				=> Secure your VMs - (Dedicated Hosts)
 	
-	
+MANAGED COMPUTE SERVICES:
+==========================
+		Something like Azure App Service helps us not to worry much about anything like Virtual Machines, deployment, load balancing, we just tell App Service this is the web application I want to run, it just takes care of everything for us.
+		In this section, we would learn about IaaS, PaaS, Containers, Kubernetes, Serverless, Azure Functions.
+		
+	In the previous section, we have seen creating a VM, installing software(nginx), configure load balancing, auto scaling but setting those were not easy, involved more manual steps. How can we make it simple? thats where we go for Managed Services.
+		
+		There are different terms that we need to understand before;
+			IaaS - Infrastructure as a Service	
+			-----------------------------------	
+					-> Good example is the use we have already seen, Cloud just provides us with physical hardware, virtualisation, networking, where we have created a VM, installed OS, install softwares, deploying application, configure load balancing and availability and Application code and run time(.net).
+					-> Also any upgrade or patch related things to OS we have to take care of.
+					
+			PaaS - Platform as a Service
+			-----------------------------
+					-> Here in this case, we will use a platform provided by Azure, where we will not need to worry about Installing OS, Softwares, respective patches/upgrades, AutoScaling, Availability, Load Balancing, all these are taken care by Azure.
+					-> Our responsibility is only related to Application configuration and code.
+					-> Rest of all the other things taken care for us.
+				Examples:
+				----------
+					Azure App Service.
+					Azure SQL database - Relational and NoSQL
+					
+We will start with Azure App Service in the next section:
+---------------------------------------------------------
+	It is a fully managed platform for building, deploying and scaling our web apps.
+	It natively supports .Net, .Net Core, RestAPIs, node.js etc.,
+	We may need to choose a App Service Plan - defines set of compute resources for a web app.	
+					
+					
+					
