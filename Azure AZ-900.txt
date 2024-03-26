@@ -350,5 +350,42 @@ Creating First Container:
 Go to Container instances -> Container name, quick start image (hello world) -> resource group -> Create -> once done we can copy the IP address and load the IP in browser -> to view the Azure Container instance up and running
 
 		
-					
+Managing Multiple Containerized applications
+--------------------------------------------
+	If we have built a container images for our Microservices, for example containers build for Microservice A, B, C, D and E. Now we want to manage the deployment of these containers, also we want to auto-scale based on the load.
+	But to have this, just having containers would not be sufficient, we would want some kind of orchestration around these containers.
+
+		Thats where we come across different orchestrator solutions, most popular one is "Kubernetes" - open source container orchestrator solutions, which helps us in managing the deployment, auto-scaling of the container instances based on the load, resiliency that identify if any container instance fails and replace it with working instance, and whenever we talk about multiple instances Load Balancer is a must in place to distribute the load between the instances.
+		
+		Other features are; 
+		-------------------
+			Service Discovery 
+			-----------------	
+				-> Each container can ask orchestrator for the location of the other container, so that no need of hardcoding the URLs of the other microservices.
+			Self healing 
+			------------
+				-> Do regular health check on instances and replace failing instances.
+			
+			Zero Downtime Deployments:
+			---------------------------	
+				-> Orchestrator provides number of different strategies to release new versions of software without downtime.
+				
+	All the Cloud Providers provide Kubernetes Managed Services.
+				
+								EKS - Elastice Kubernetes Service (AWS)
+								AKS - Azure Kubernetes Service (Azure)
+								GKE - Google Kubernetes Engine (GCP)
+
+	Now lets see about AKS and Service Fabric provided by Azure.
+	AKS - Managed Kubernetes Service
+	---------------------------------	
+			-> Whenever we use orchestrator, we create the cluster and configure the number of nodes or servers and deploy microservices.
+			-> since this is offered by across cloud providers, when we need orchestrator solution to be cross compatible then AKS is the option to go for.
+			
+	Azure Service Fabric:
+	---------------------
+		This is a Microsoft specific orchestrator solution.
+		
+		
+			
 					
