@@ -307,7 +307,48 @@ We will start with Azure App Service in the next section:
 ---------------------------------------------------------
 	It is a fully managed platform for building, deploying and scaling our web apps.
 	It natively supports .Net, .Net Core, RestAPIs, node.js etc.,
-	We may need to choose a App Service Plan - defines set of compute resources for a web app.	
+	We may need to choose a App Service Plan - defines set of compute resources for a web app.
+
+
+Lets create our first web app using Azure App Service.
+
+Go to App Services -> Create -> Web App -> Since I deleted compute-rg, create a new rg (compute-rg-new) -> Add a app name (my-first-web-app-gowthamn91) -> select if we are going to publish code or docker container -> I selected docker option -> region selected as sweden central -> App service plan with free usage (ASP-computergnew-9f13 (F1: 1)) recommended already -> Docker tab, auto selects NGINX to be installed automatically.
 					
+Default domain: https://my-first-web-app-gowthamn91.azurewebsites.net/ -> up and running.
+
+INTRODUCTION TO DOCKER Containers
+----------------------------------
+ -> One of the most popular architectural styles today is Micro Services.
+ -> Why micro services? it helps to build small set of focussed services working together to form the system instead of building one large monolith application.
+ -> One big advantage is it provides "Flexibility to innovate", like we can build different services in different programming language.
+	-> Like Movie Service in Go, CustomerService in Java, BookingService in Javascript etc., 
+	-> Ideally we will not want to use lot of languages to be used in a single enterprise as it adds more complex while deploying the small applications/service as Go might have different way of deploying, Java has different way.
+	-> But to note this microservices gives the flexibility to choose different language if a real need arise for building any particular service.
+	
+How do we avoid the challenges with deploying these small applications?
+------------------------------------------------------------------------
+		Though different languages used, how do we make it one way of deploying applications.
+		Here comes the CONTAINERS play a crucial role.
+		
+		For each microservice, it creates a Docker image (which consists of all the things needed for the service to run) like Application runtime, if Java then JDK, if python - python inside the container etc.,
+			-> Application code and its dependencies.
+			
+	VM vs Container
+	---------------
+		VM - virtualizes hardware and each VM can run on its own OS, CPU, Memory, Network interfaces.
+		It is useful for the applications which require OS-Level Isolation, compatibility with specific OS versions.
+		
+		Containers: Shares host OS Kernel, shares the host resources (CPU, memory and networking).
+					It has lesser over head than VMs because of it needs all seperate resources.
+					Even containers provide isolation at the light weight level between containers.
+					It is well suited for smaller , microservice based applications.
+					
+		Docker is Cloud Neutral. (it can be deployed in any cloud environment).
+
+Creating First Container:
+-------------------------.
+Go to Container instances -> Container name, quick start image (hello world) -> resource group -> Create -> once done we can copy the IP address and load the IP in browser -> to view the Azure Container instance up and running
+
+		
 					
 					
