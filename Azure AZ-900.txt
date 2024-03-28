@@ -386,6 +386,30 @@ Managing Multiple Containerized applications
 	---------------------
 		This is a Microsoft specific orchestrator solution.
 		
+SERVERLESS:
+-----------
+	When we develop an application, we think about language, framework to use, along with it we also think about where to deploy my application into, which OS?
+			But if suppose we don't want to worry about all these servers, deployment, scaling, availability aspects, there comes Serverless feature.
+			
+	Serverless - does not mean "No Servers". It still deployed into a server, but we don't have any kind of visibility about the infrastructure of where the application is deployed to. 
+		-> Example: Functions as a service. In Azure - Azure Functions.
+	Also it offers Pay for use -> if no requests, then no need to pay, pay only for invocations/requests, not for servers.
+		Basically, we pay for;
+				=> Number of requests
+				=> Duration of requests
+				=> Memory Consumed
+				
+Create a Function App:
+-----------------------
+		Go to FunctionApp -> Create a function app -> add details like name, runtime stack -> then most of the other tabs with default values -> review and create.
+		We can add the function as HttpTriggers, Queue Trigger, etc., - code and logic and also there is a public url which can be called from browser to access the function for HttpTriggers.
+		
+		This Azure feature also offers always free tier, that is 1 million request per month is free, we pay only for what we use.
+
+		
+		
+	
+		
 		
 			
 					
