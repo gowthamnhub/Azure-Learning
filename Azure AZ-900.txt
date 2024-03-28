@@ -406,7 +406,19 @@ Create a Function App:
 		
 		This Azure feature also offers always free tier, that is 1 million request per month is free, we pay only for what we use.
 
-		
+Software as a Service (SaaS)
+-----------------------------
+		It is a centrally hosted software, mostly on the cloud (like gmail, office365, docs etc.,)
+		As in IaaS - we have more responsibility even configuring the hardware, PaaS - we don't care about hardware, just focus on the application logic and development, in SaaS - it is the software provided for use pay-as-you-go, here users responsibility is just about configuring and using and the Data. Everything else taken care by the cloud provider.
+
+Shared Responsibility Model:
+----------------------------
+On Prem - Including physical farm/server setup
+IaaS - Other than physical farm/setup, responsibility on others OS, network, application, identity management, data.
+PaaS - No more responsibility on OS configuration, but partial on N/w, Applications, Identity and directory infrastructure 	and data.
+SaaS - No OS, n/w, application, only accounts, data, device.
+
+ 		
 		
 	
 		
