@@ -418,6 +418,81 @@ IaaS - Other than physical farm/setup, responsibility on others OS, network, app
 PaaS - No more responsibility on OS configuration, but partial on N/w, Applications, Identity and directory infrastructure 	and data.
 SaaS - No OS, n/w, application, only accounts, data, device.
 
+AZURE STORAGE
+==============
+	In previous section, we have learnt about Compute Services, in this we will go ahead learn about Storage.
+	There are three basic storage types;
+		Block
+		-----	
+			-> like out hard disk storage
+			-> Typically, one disk can be connected to one VM
+			-> But a VM can have multiple disks connected.
+		File
+		-----
+			-> If suppose we want to share a file with our colleagues in an enterprise, there we go for File Storage type.
+		
+		Object
+		------
+			-> In both the above storage types, we have to mount the storage on to the Virtual Machine/ establish the physical connection with the VM.
+			-> What if we don't want to mount the storage to our VM, and we want to upload / download the files to a storage using a REST API in a more decoupled way, there comes the Object Storage. 
+
+
+	There are even more wide variety of Storage Types. 
+	
+	In Azure, where we would store all the different types of storage is Azure Storage.
+	Azure Storage is Managed Cloud Storage Solution, It is highly available, durable, massively scalable.
+	Whenever we talk about data, Durability is very very important, you don't want to lose data.	
+	Scalability is about how much data that can be stored in Azure Storage - (upto few petabytes)
+							
+							1 Tera Byte - 1024 GB							
+							1 Peta Byte - 1024 TB		
+					Which is huge huge amount of data!!!!!!!!	
+	
+	Core Storage Services
+	----------------------
+		Azure Disks: Block Storage
+		Azure Files: File Storage
+		Azure Blob: Object Storage (Text file, binary data)
+		Azure Table: NoSQL (very basic features)
+		Azure Queue: For messaging system (which decouples producer and consumer)
+		
+	But to make use of the above services, we need to have a storage account created.	\
+	
+How do we achieve the Durability?
+----------------------------------
+Data Redundancy - By replicating the data in multiple locations.
+
+LRS - Locally Redundant Storage - three synchronus copies of data stored in the same data center. (default in any storage)
+	-> Least expensive and Least availability since same data center.			
+
+ZRS - Zone Redundant Storage - 
+	-> Data is copied on to three different AZs of the primary region.
+
+GRS - Geo Redundant Storage	
+	-> LRS + Asynchronus copy of data in secondary region (three more copies using LRS)
+	-> Meaning LRS in both primary and secondary region
+
+GZRS - Geo Zone Redundant Storage
+	 -> ZRS + Asynchronus copy of data in Secondary region (three more copies using LRS)	
+	 -> Most expensive and high availability, durability
+	 -> ZRS in primary and LRS in secondary region.
+	 
+Region Pairs
+-------------
+	We have seen above that to achieve high durability, need to replicate data across regions. 
+	But how it is done? using Region pairs.
+	When we create the storage in Azure, we select the region and all the regions in Azure have a region pair tagged which is not more than 300Kms away so that the transferring of data is also faster.
+
+					"Like Central India and South India, East US and West US"
+					
+	Also Azure ensures that both the regions will never go down together, very very rare to see both the regions go down. They ensure updates/patches are applied on different times for the region pairs to ensure high availability.
+		-> Always data access happens from Primary region, option to failover to secondary region when primary region is not available.
+		-> Since these region pairs are mostly near to each other, not more than 300kms away, data replication and synchronization happens very fast.
+	
+	
+	
+					
+		
  		
 		
 	
