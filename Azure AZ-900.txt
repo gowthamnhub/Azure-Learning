@@ -486,8 +486,43 @@ Region Pairs
 					"Like Central India and South India, East US and West US"
 					
 	Also Azure ensures that both the regions will never go down together, very very rare to see both the regions go down. They ensure updates/patches are applied on different times for the region pairs to ensure high availability.
+		
 		-> Always data access happens from Primary region, option to failover to secondary region when primary region is not available.
 		-> Since these region pairs are mostly near to each other, not more than 300kms away, data replication and synchronization happens very fast.
+		
+MANAGED AND UNMANAGED BLOCK STORAGE:
+====================================
+	We know what is a block storage, it is like hard disk connected on our computer. 
+	Here disks attached to a VM. 
+		-> Typically one hard disk can be attached to a single computer, but single machine can have multiple disks attached to it.
+
+Where we can create/add disks to VM?
+-----------------------------------------
+	Create VM -> Go to Disks tab -> Here we can select disk size and disk type as below;
+			Standard HDD - best for less frequent accessed data, best for backup, non critical.
+			Standard SSD - best for web servers, lightly used web applications.(dev/test environments)
+			Premium SSD - Best for production and performance sensitive loads.
+			Ultra SSD - Best for IO intense workloads, transaction heavy workloads. (SAP HANA, SQL, ORACLE)
+			
+		Premium SSD and Ultra SSD provides more availability upto 99.9%
+		Standard SSD - 99%
+		Standard HDD - 95%
+			
+	Whatever disks we have seen so far are Managed Disks, when we create the VM, we go with default option of storage disk, that is managed, that is the recommended to be used.
+		There is also another type of storage disk - Unmanaged Disks.
+		
+	Difference between Managed and Unmanaged:
+	------------------------------------------
+		-> In managed, we just create disk, but we do not worry about where the disk is stored and its availability, durability all these things will be automatically taken care by Azure for us.
+		-> In Unmanaged, we have to configure all these things manually and those caonfigurations can be very tricky, hence it has to be avoided if you can.
+		
+How to create Unmanaged disk?
+------------------------------
+		Go to Disks - before that make sure the VM selected is of Gen 1 configuration -> Selected HDD as we are just doing trail with pay-as-you-go to avoid more pricing -> Advanced tab -> uncheck managed -> it will create another storage account -> create VM (takes about 10mins)
+		
+		But whatever disk created is not visible in the Disks, but can be seen inside the storage thats created -> inside that there is containers where we can see the new unmanaged disk created.
+		This container is just a term, nothing to do with Docker Container.
+		Blob type is of "Page Blob".
 	
 	
 	
