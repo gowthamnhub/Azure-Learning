@@ -523,6 +523,23 @@ How to create Unmanaged disk?
 		But whatever disk created is not visible in the Disks, but can be seen inside the storage thats created -> inside that there is containers where we can see the new unmanaged disk created.
 		This container is just a term, nothing to do with Docker Container.
 		Blob type is of "Page Blob".
+		
+Azure File Storage:
+--------------------
+	When we want a storage which can be accessed by multiple VMs/Devices to fetch files/store files, then File Storage is our option.
+		-> The devices which accesses the file storage can be from Cloud or from OnPrem, can have any OS (Windows, Linux, macOS).
+		-> When we talk about file storage, they make use of two important protocols SMB(Server Message Block) and NFS(Network File System).
+		-> "Azure Files" supports both these protocols.
+		
+Create a Storage Account -> Then go to storage account resource created -> Data Storage -> 
+			You can find different options there;
+				Containers -> Where unmanaged disks stored/created
+				File Shares -> File share can be created.
+				Queues
+				Tables
+				
+		After file share created -> We can connect to it from different OS, instructions are given there.
+May need to try it.		
 	
 	
 	
