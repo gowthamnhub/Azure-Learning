@@ -541,8 +541,64 @@ Create a Storage Account -> Then go to storage account resource created -> Data 
 		After file share created -> We can connect to it from different OS, instructions are given there.
 May need to try it.		
 	
+Azure File Sync:
+=================
+	"Windows File Share" is the tool to create file shares for on-prem users, system, it gives number of flexible options to connect to and access the data in the share path.
+
+	We have seen earlier that "Azure Files"	is the service to create file share in the Cloud, one of the advantage is it exist in the Cloud, it can be connected from any device. 
+	But it does not provide the flexibile different ways of connecting as in the Windows File Share.
 	
+	If we want to host the share path in the cloud and  also need the flexible ways of connecting provided by Windows File Share, then "Azure File Sync" service is the way.
 	
+AZURE BLOB STORAGE:
+===================
+	It is object storage in Azure. 
+	What does it store? helps saving massive amount of unstructured data like (text file, image files, media files).
+	Structure: Storage Account -> Countainer(s) -> Blob(s)
+	It is highly scalable, provides data resiliency, data security with features such as RBAC and integration with Azure Active Directory.
+	
+	Different types of BLOB:
+	------------------------
+		Block Blob:  Stores Full text,image, media files, DB backups, Archives.
+		Append Blob: Suited for Append operations, that is for Log file.
+		Page Blob: 	 Virtual Disk that we attach to VM. Foundation for IaaS disks.
+		
+	Azure Data Lake Gen2 Storage:
+	------------------------------
+		-> It is also Azure Blob Storage, but it combines with additional features of storing data in both structured and unstructured format by storing the data in hierarchical system with directories and folders. And this helps in managing data and performing Data Analytics using technologies Azure Databricks, Azure HDInsight, Azure Synapse Analytics (formerly Azure SQL Data Warehouse). 
+		
+		
+	Access Patterns and Access Tiers:
+	----------------------------------
+		Though we store the data, we have several patterns when/how frequent we access a particular data, if we access a particular file/data very frequent then we want that file to be access with low latency.
+		
+		That is Hot Tier. Low Latency, high storage cost.
+		
+		When a file is accessed less frequently probably every 30 days, that can be go into Cool Tier. - High Latency than Hot Tier, low storage cost than Hot Tier.
+		
+		Suppose a file is just stored may not be accessed for months, may be 6 months once. That goes into Archive Tier. And you know it, High Access Cost, for accessing / downloading the file it may take few hours of time, Low Storage cost.
+		
+	Create Storage Account -> Containers -> Add Container -> Start uploading files -> Here you can change the tier (hot, cool archive). Can have multiple versions.
+
+	Container Properties to view the URL that can be used by different applications to Save/Fetch the data.
+		"https://myfirststorageaccountgow.blob.core.windows.net/myfirstcontainer"
+		
+	May need to have some authentication details.
+
+		Shared Access Signature / Shared Access Tokens		
+		----------------------------------------------
+			-> It is a URI that grants restricted access to the container for predefined time range without sharing the account key.
+			
+
+AZURE STORAGE EXPLORER/BROWSER:
+================================
+	This is similar to Windows File Explorer, where we can manage files, similar here we can manage files, accesses/permissions, Upload, Download files.
+	
+	It also provides with extensions to move data from another cloud to Azure like 
+AWS S3 to Azure Storage.
+
+	This helps to perform these operations with GUI, but if suppose we want to have it done by Command Line Utility and automate these operations, then we have something called "AzCopy".
+		Even Azure Storage Explorer does use AzCopy in the backend.	
 					
 		
  		
