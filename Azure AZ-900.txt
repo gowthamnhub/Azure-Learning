@@ -598,8 +598,48 @@ AZURE STORAGE EXPLORER/BROWSER:
 AWS S3 to Azure Storage.
 
 	This helps to perform these operations with GUI, but if suppose we want to have it done by Command Line Utility and automate these operations, then we have something called "AzCopy".
-		Even Azure Storage Explorer does use AzCopy in the backend.	
-					
+		Even Azure Storage Explorer does use AzCopy in the backend.
+
+AZURE DATABASES:
+=================
+	We have learned about Compute Services and Storage Services in the previous sections.
+	In this we will start learning about Databases, before that we will go through some of the fundamentals of the Databases like availability, durability, consistency, then we go through different kinds of Databases (SQL, NoSQL, etc.,).
+
+	Basically database provides organized and persistent storage for our data.
+	Before choose a DB which type to be used for different purposes, we need to understand some of the basics like;
+		=> Availability
+		=> Durability
+		=> Consistency
+		=> RTO
+		=> RPO
+		=> Transactions etc.,
+		
+ For example:
+ ------------
+	We have a DB server in London region which our application connects to.
+	Challenges:
+	-----------
+		1. DB server goes down, if the data center goes down.
+		2. Data loss, if the database crashes.
+
+	How do we resolve these challenges?
+	------------------------------------
+		We can have a Database Snapshot stored in another data center every hour, so that when there is down in primary data center, we can restore the data using snapshot.
+		
+			1. Still remains if there is a data center failure.
+			2. But with data loss, helps us partially based on when the DB crash occurs, if suppose Snapshot taken at 4 PM, DB crashes at 4.50PM, that 50mins of data is lost.
+				-> With this there is another problem? whenever we take snapshot, the DB performance goes very slow.
+			
+		Can we resolve these 50mins data loss?
+		---------------------------------------
+			Yes, that is done with the help of setting up Transactional Logs, which keeps of each transactions, along with Point in time backup of Snapshot, we can restore almost data without any loss during DB crash.
+	
+		Still the performance slowness is a problem?
+		--------------------------------------------
+			So now, we have replication DB server setup at the Data center 2, which replicates synchronusly, and snapshot is taken from secondary DB server.
+				-> Now you can see two of the problems solved, 1st one when data center failure, DB goes down, here we have secondary DB server to serve us!!!!! and 2nd one with respect to performance slowness during snapshot, since primary server does not involved in Snapshot process, there is no issue to our application.
+
+				
 		
  		
 		
