@@ -639,12 +639,70 @@ AZURE DATABASES:
 			So now, we have replication DB server setup at the Data center 2, which replicates synchronusly, and snapshot is taken from secondary DB server.
 				-> Now you can see two of the problems solved, 1st one when data center failure, DB goes down, here we have secondary DB server to serve us!!!!! and 2nd one with respect to performance slowness during snapshot, since primary server does not involved in Snapshot process, there is no issue to our application.
 
+AVAILABILITY and DURABILITY:
+----------------------------
+	Availability - is about DB is available for my access now and whenever I need.
+				 - Typically, it is measured in % as below;
+				 99.95% - Application has downtime of 22 mins in a month.
+				 99.99% (4 9s) - Application has downtime of 4.5 mins in a month. This included release downtime as well.(All the online apps aims for 4 9s).
+				 99.999% (5 9s) - Application has down time of 26s in a month (highly tough to achieve)
+					
+ 	Durability - is about how long my data is stored safely
+			   - If i can access my data 10 years later/100 years/ more than that as well, because we hate losing data, once the data is lost, that is it its gone permanently.
+			   - we are even ok with application downtime for few mins in a month, but data loss highly not acceptable.
 				
+				99.999999999 (11 9s) is considered to be good durability.
+					=> means, if we store 1 million files for 10 million years, we expect to lose one file.
 		
- 		
+INCREASING AVAILABILITY and DURABILITY:
+=======================================
+	How do we increase Availability?
+	---------------------------------
+		-> This we have already known, we need to have multiple standby systems setup, so that when a server goes down, it switches over to another standby to serve the application.
+		-> To distribute the servers across multiple AZs or multiple Regions.
 		
+	How	do we increase Durability?
+	-------------------------------
+		-> We need to have multiple copies of data (standbys, snapshot, transaction log, replicas) in servers across multiple AZs / Regions.
+		-> But replicating data comes with its own challenges, like how do we maintain the consistency of data across different data copies stored.
+		
+			That we will discuss in the later section.
+			
+RTO and RPO:
+============
+	RTO - Recovery Time Objective - Maximum acceptable downtime.
+	RPO - Recovery Point Objective - Maximum acceptable period of data loss.
+
+	We have seen about Availability and Durability are technical measures of data availability for access and persistency of data stored.
+
+But if suppose, there is a server went down, how do we measure how quickly we can recover from the failure?
+	There comes RTO and RPO.
+
+Example:
+---------
+	You are running an application on VM instance storing its data on a persistent storage.
+	You are taking snapshots every 48 hours, if the VM instance crashes, you can manually bring it up in 45 mins from the snapshot. What is its RTO and RPO?
 	
-		
+Ans: RTO - 45 mins, RPO - 48 hrs (if server down at 47h 59m, prev back up taken before 48hrs, data loss of about 47h 59m)
+
+Scenario:
+----------
+Very small data loss - RPO(1 min) 
+Very small downtime - RTO (5mins) 
+	-> Then we have to go for Hot standby, where the redundant system is fully operatational, synchronusly replicated and ready to take up the load immediately when the primary server goes down.
+
+Very small data loss - RPO(1 min) 
+little downtime is acceptable - RTO (15 mins)
+	-> We can go for Warm standby, where the redundant system is partially operatational, automatica synchronize data, it won't immediately ready to take up the load when primary server goes down, takes slight amount of time to start picking the load once primary goes down.
+
+Very small data loss - RPO(1 min) 
+few hours downtime is acceptable - RTO (few hours)	
+
+	-> We can have the snapshot, transaction log setup, so that once there is a server down, we can setup the database using snapshots, transaction logs within few hours.
+	
+Data can be lost without a problem:
+-----------------------------------
+	for eg: cached data - Failover to completely new server.	
 		
 			
 					
