@@ -703,6 +703,24 @@ few hours downtime is acceptable - RTO (few hours)
 Data can be lost without a problem:
 -----------------------------------
 	for eg: cached data - Failover to completely new server.	
+	
+CONSISTENCY:
+============
+	How consistent the data across different replicas?
+	If we need all the data to be immediately availabile on all standbys, then we go for STRONG CONSISTENCY.
+		-> but the problem with it is, when we have multiple standbys, the transaction gets committed only when all the replicas got the data update, and it slows down the system.
+			-> Suits for critical systems like Bank transactions...
+			
+	Then We have something called as EVENTUAL CONSISTENCY, there would be slight delay in replicas get updated with the data, but eventually all the replicas would get updated.
+		-> Eg: Social media posts, Facebook post, instagram posts, etc.,
 		
+	Read-after-Write Consistency
+    -----------------------------	
+		Inserts are immediately availabile to replicas, but updates would be Eventual Consistency.
+	
+	Different DBs offer different level of consistencies.
+	
+How to choose the Database?
+----------------------------	
 			
 					
