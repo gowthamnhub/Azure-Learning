@@ -721,6 +721,30 @@ CONSISTENCY:
 	Different DBs offer different level of consistencies.
 	
 How to choose the Database?
-----------------------------	
+----------------------------
+	There are several categories of Databases, 
+		-> Relational Databases 
+			-> Even in this there are several categories;
+				-> OLTP (Online Transactional Processing)
+				-> OLAP (Online Analytics Processing)
+		-> In memory 
+		-> Document 
+		-> Key value
+	
+	Different factors to choose databases;
+	--------------------------------------
+		-> Fixed Schema (NoSQL offers flexible schema or schemaless)
+				-> this will have predefined tables, columns, data types, constraints
+		-> Transaction Properties 
+				-> ACID 
+					-> Atomicity - Transactions are completed in full or not at all, like if any part of transaction fails, entire transaction is rolled back.
+					-> Consistency - it is about the data being consistent between related tables, this is achived via Constraints, Validations, Triggers.
+					-> Isolation - it is about concurrent requests being isolated and do not interfere with each other, achieved via different isolation levels set for transaction to control this behavior.
+					-> Durability - this we have already seen, once a data is saved should be able to survive system failures, and persisted for long time for accessibility.
+					
+		-> How much latency we expect? (s, ms, microseconds)
+		-> How many transactions we expect? (hundreds, thousands, millions of transactions per second).
+		-> How much data we will store? (MB, GBs, TBs or PBs).
+					
 			
 					
