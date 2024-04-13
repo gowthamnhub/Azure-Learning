@@ -734,7 +734,7 @@ How to choose the Database?
 	Different factors to choose databases;
 	--------------------------------------
 		-> Fixed Schema (NoSQL offers flexible schema or schemaless)
-				-> this will have predefined tables, columns, data types, constraints
+				-> this will have predefined tables, columns, data types, constraints (SQL)
 		-> Transaction Properties 
 				-> ACID 
 					-> Atomicity - Transactions are completed in full or not at all, like if any part of transaction fails, entire transaction is rolled back.
@@ -747,4 +747,27 @@ How to choose the Database?
 		-> How much data we will store? (MB, GBs, TBs or PBs).
 					
 			
+We will know some basics about Relational Databases
+----------------------------------------------------
+		-> This was the only option available a decade back.
+		-> This provides with predefined set of Tables/Schemas to store data.
+		-> We know about SQL which is a RDBM system -> which provides us strong relationship between entities/tables using foreign keys, gives us strong transactional capabilities to maintain consistency between different tables, Like all of the parts of transaction gets successful or everything rolled back if atleast one fails.
+		-> PK helps as a unique key to identify each row / record from table. Each record can be called as each instance of an entity.	
+
+It can be used for;
+-------------------
+	OLTP - Online Transaction Processing 
+			-> Typically when we have a web application and transactions done on that, then that will be using OLTP.
+	OLAP - Online Analytics Processing
+			-> This is mostly used in Dataware house applications where a huge number of data can be stored and generate analytics/intelligence from it.
+			
+	Mainly OLAP or OLTP are design based category of database system.
+	------------------------------------------------------------------
+			-> How we design the schema, if we need short transactions to be run faster, efficiently, we do all CRUD operations or Read heavy system, if we use the data stored for Analytics or Intelligence purposes like viewing sales trends data, data analysis etc.,
+			
+			-> OLTP - designed for transactional workloads.
+					- designed to have normalized schema to minimize redundancy, optimize transactional processing, ensure data integrity.
+			-> OLAP - designed for analytics workloads
+					- denormalized schema or star/snowflake schema designed to optimize data retrieval, support complex queries (multiple joins) and faciliate reporting and analysis purposes.
+					
 					
