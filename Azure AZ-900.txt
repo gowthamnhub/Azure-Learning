@@ -770,4 +770,118 @@ It can be used for;
 			-> OLAP - designed for analytics workloads
 					- denormalized schema or star/snowflake schema designed to optimize data retrieval, support complex queries (multiple joins) and faciliate reporting and analysis purposes.
 					
+Exploring Relational Databases - OLTP:
+=======================================
+		Popular Relational Databases - MySQL, Oracle, SQL Server, PostgreSQL
+			=> Azure SQL Database - Managed Microsoft SQL Server
+			=> Azure Database for MySQL - Managed MySQL
+			=> Azure Database for PostgreSQL - Managed PostgreSQL
+			
+			
+Azure SQL Database:
+--------------------
+	-> Fully Managed Relational Database service offered by Azure. 
+	-> Based on SQL server database engine.
+	-> Provides Scalability and High Availability, Automatic Updates, Backups. - 99.99%.
+	-> Hyperscale Storage (upto 100TB)
+	
+Azure Database for MySQL:
+--------------------------
+	-> Fully Managed, Scalable MySQL database.
+	-> Provides Scalability and High Availability, Automatic Updates, Backups. - 99.99%.
+		-> Can choose single zone or zone redundant high availability
+	-> Typically used for LAMP Stack (Linux, Apache, MySQL, Perl/Python/PHP)
+	
+Azure Database for PostgreSQL:
+-------------------------------
+	-> Fully Managed, Scalable PostgreSQL database.
+	-> Provides Scalability and High Availability, Automatic Updates, Backups. - 99.99%.
+		-> Can choose single zone or zone redundant high availability
+	-> Typically used for LAMP Stack (Linux, Apache, MySQL, Perl/Python/PHP)
+
+Commands used in next sections:
+-------------------------------
+mysql --host=mysql-server-in28minutes.mysql.database.azure.com --user=mysqlserver -p
+ 
+create database todos;
+use todos;
+create table user (id integer, username varchar(30) );
+describe user;
+insert into user values (1, 'Ranjith');
+insert into user values (2, 'Ramesh');
+select * from user;
+
+Created a "Azure Database for MySQL" using Azure Portal ->	connected to it via cloud-shell commands provided above. 
+username: Gadmin, Password: P@ssw0rd
+hostname/server name: my-first-sql-server.mysql.database.azure.com
+MySQL version: 8 
+
+Created a database todos -> create user table -> inserted two rows (Ranjith, Ramesh)
+
+Next, Lets start discuss about OLAP (Online Analytics Processing)
+------------------------------------------------------------------
+	From before sections, we understood, OLAP is mainly for data analytics based applications where huge data is stored(like petabytes) and complex queries are used for fetching the data for analysis and provide intelligence for the businesses.
+		Examples: Reporting Applications, Dataware houses etc.,
+		
+			So these petabytes of data are mostly consolidated from multiple databases(including transactional databases).
+	
+	For this kind of application,"Azure Synapse Analytics" is the service offered by Azure.
+	---------------------------------------------------------------------------------------
+		-> It is a Petabyte-Scale distributed data ware house.
+			-> Which includes capabilities of Data integration + Enterprise Datawarehousing + Big data Analytics
+			-> Enables MPP (Massively parallel processing) - like running a query against a single server will be slow, but running it against multiple parallel nodes is faster.
+			-> But how do we run the query against multiple nodes?
+				This is where we have to understand how OLAP stores the data in a different way than OLTP and which helps for distributing the single query to run across multiple nodes to fetch data faster.
+			
+					OLTP: use row wise storage
+					OLAP: use columnar storage.
 					
+				-> each columns are stored in different nodes which helps to store the data and helps retrieving it effectively because the column will have similar kind of data, helps in much better compression of data.
+				-> most importantly it helps to run the very complex queries against multiple nodes to fetch the data very efficiently.
+				
+
+NoSQL Database:
+---------------
+	-> it means "not only SQL".
+	-> main feature of NoSQL database is it does enforce fixed schema to be required for data storing, even without schema, flexible schema which can evlove over a period of time for data storing.
+	-> Meaning each row of the table/collection can have different types, number of columns, relationship with other tables, everything can be different, which is not in the case with SQL for maintaining the data integrity.
+
+What does it help in achieving?
+--------------------------------
+	-> It helps if we think / not able to decide what should be schema of our tables, that should not stop us from developing applications and deploying, we can go ahead with what information we have right now, and over a period of time based on the application needs, the schema can be changed without much problem.
+	
+			"Also to note this does come with the trade off "Consistency and SQL features" to provides more Scalability and High Performance"
+	
+	->Horizontally scale to petabytes of data with millions of Transaction per second (TPS).
+	
+Which is the Azure Managed Service?
+------------------------------------
+	Azure Cosmos DB - Fully Managed NoSQL database service.
+		Automatically replicates data across multiple data across multiple Azure regions.
+		-> Schemaless
+		-> 99.999% Availability
+		-> Single digit millisecond response times
+		-> Automatic Scaling (Serverless).
+
+Supports APIs for MongoDB (document), Cassandra(key/value), Gremlin (Graph).
+
+Create a Azure Cosmos DB for MongoDB APIs
+------------------------------------------
+		It gives the details how do we connect Cosmos DB to different applications built on .Net, NodeJs, Java, MongoDB Shell with instructions.
+		
+		Also we have a way of connecting to Cosmos DB via Data Explorer way. 
+			-> We can create a new collection -> new document saving data and when we do that we also mention shard key (using which data gets partitioned to multiple nodes) to enable distributed database system.
+			
+Azure In Memory Database:
+--------------------------
+	-> Retrieving data from in memory is always faster than retrieving data from disk.
+	-> But all our databases so far we have seen stores data in disk, because we want the data to be persistent, don't want any data to be lost because of any machine restart or any such actions.
+	-> But if we want data to be retrieved very faster as well as we want data to be persistent, then we have storages like "Redis" to do that for us.
+	
+Azure Managed Service for Redis - Azure Cache for Redis
+========================================================
+		-> Delivers response in microsecond latency.
+		-> It provides upto 99.999% availability by replicating data across multiple zones and regions.
+							
+			
+		
