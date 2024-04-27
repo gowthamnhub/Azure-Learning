@@ -884,4 +884,46 @@ Azure Managed Service for Redis - Azure Cache for Redis
 		-> It provides upto 99.999% availability by replicating data across multiple zones and regions.
 							
 			
+NETWORKING IN AZURE
+====================
+	In the above sections, we have learnt about Compute, Storage, Database services in Azure, But how do we ensure that all the resources we create are secure enough that it cannot be accessed outside without sufficient permissions.
+	
+	That is where we would need to understand the concepts of networking in Azure.
+	We would learn about "Azure Virtual Network", why do we need multiple subnets, how do we create firewalls?.
+	
+Azure Virtual Network:
+-----------------------
+	-> What is a virtual network?
+		-> We know that all the communication between the resources / machines occur with help of network.
+	
+In a Corporate Network or an On-Premise data center:
+----------------------------------------------------	
+Consider we have an Application talking to database within a corporate data center;
+	Here comes a question;
+		-> Can anyone on the internet see the data exchange between the application and the database?
+			The answer is NO.
+		-> Can some one directly connect to the database from internet?
+			NO again.
+			
+	If we want to connect to the database, we would need to connect to the Corporate Network first and then would be able to access the Application and the database.
+
+		-> So Corporate Network is the one that provides us the secure internal network to protect the resources, data and communication from external users.
+		
+How do we create our own private network in the Cloud?
+------------------------------------------------------
+	Via Azure Virtual Network
+		-> It is your own isolated network within Azure.
+		-> Network traffic within the virtual network is not visible to other Azure Virtual Networks meaning it is also not visible outside of Azure.
+		-> Each Virtual Network that we create would be associated with One Region, when we create a virtual network, we create it inside a region.
+		-> we can also have a multiple virtual networks created for different regions.
+		
+	=> Basically, when we create our resources (Compute, Storage, Databases etc.,) we should have it created within the Virtual Network (Best Practice).	
+	=> So we can control all traffic coming in and going outside our Virtual network, trying to communicate to our resources.
+		-> It basically helps us with restricting Unauthorized accesses to our resources.
+		-> Enables the secure connection between our cloud resources.
+		-> Ensures the communication between cloud resources within a virtual network is not visible outside the virtual network.
+		
+		
+	
+		
 		
