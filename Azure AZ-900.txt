@@ -941,7 +941,32 @@ Understanding Need for Subnets
 
 				-> By this we can have the neccessary configurations setup to make our private resources more protected.
 				
-				
+Creating Virtual Network in Portal
+===================================
+	Go to Portal -> Virtual Network -> Create Virtual Network -> And in the Ip Address section, we can see the subnets, we can add multiple new subnets as well (name it like private, public) with address range.
+		For eg;
+		--------
+			private: 10.0.0.0 - 10.0.0.255 (251 + 5 Azure reserved addresses)
+			public: 10.0.1.0 - 10.0.1.255 (251 + 5 Azure reserved addresses)
+			
+	There are several other options like services but this is not sure, I think may be when we select multiple services, those service end points will have access to the resources in our Vnet (subnet)
+
+We can also create resources within the specific subnet, for eg; Create Virtual Machine ->	Choose the resource group where Vnet is created (my-first-virtual-network) -> Go to Networking -> Here we will have the option to choose the subnets where we want to this have this resources deployed / part of.
+
+We will have more details around this in next step.
+
+Whenever we create a VM in a Vnet, by default it is assigned to the private subnet, we can also change it to public subnet, it will assign the private IP address within the subnet's range thats selected.
+
+	VMs within the same Vnet can communicate using private IP addresses.
+	
+Suppose we have another Vnet and we want resources in two Vnets to be communicate each other. How is it possible??????
+
+	-> Network Peering Relationship. go to Vnet -> Peerings -> Setup the configuration ton establish the relationship between two Vnets.
+	
+	With help of this, different resources in different Vnets can talk to each other, interesting thing to note is these Peering Vnets can be in different regions as well.
+	
+ 	
+			
 		
 	
 		
