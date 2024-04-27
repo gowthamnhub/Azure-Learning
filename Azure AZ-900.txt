@@ -923,6 +923,25 @@ How do we create our own private network in the Cloud?
 		-> Enables the secure connection between our cloud resources.
 		-> Ensures the communication between cloud resources within a virtual network is not visible outside the virtual network.
 		
+Understanding Need for Subnets
+===============================
+	Inside Virtual Network we can create multiple subnets, but what is subnets?		
+	Subnet - short form for Subnetwork, which is a smaller network created by dividing a larger network into segments.
+		-> So we can have different resources created within a Virtual Network like Compute, Storage, Load balancers etc.,
+			-> For ex; We want Load balancer to be accessible from Internet to connect to our virtual network then provide access to the applications or databases.
+			-> At the same time, our applications/databases should not be accessible directly from Internet, should restrict Unauthorized accesses.
+				-> basically VMs or DBs should be private resources.
+				-> Load balancer to be public resource.
+				
+	How do we seperate public resources from private resources inside a Virtual network?
+	-------------------------------------------------------------------------------------
+		We can have different subnets created with in a virtual network to seperate resources and we can have the public resources in a subnet and private resources in another subnet.
+		
+		These subnets within a VNet can communicate each other via Route tables, but outside VNet only public resource can be accessible.
+
+				-> By this we can have the neccessary configurations setup to make our private resources more protected.
+				
+				
 		
 	
 		
