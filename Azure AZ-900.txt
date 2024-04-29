@@ -958,6 +958,9 @@ We will have more details around this in next step.
 Whenever we create a VM in a Vnet, by default it is assigned to the private subnet, we can also change it to public subnet, it will assign the private IP address within the subnet's range thats selected.
 
 	VMs within the same Vnet can communicate using private IP addresses.
+	We can also configure Public IP addresses to the resources, point to note is we need to pay extra for using public IP address, there are no additional charges for using private IP address.
+	
+	Different VMs in the Vnet can communicate each other via private IP addresses, though they are in different subnets (private ore public).
 	
 Suppose we have another Vnet and we want resources in two Vnets to be communicate each other. How is it possible??????
 
@@ -965,9 +968,21 @@ Suppose we have another Vnet and we want resources in two Vnets to be communicat
 	
 	With help of this, different resources in different Vnets can talk to each other, interesting thing to note is these Peering Vnets can be in different regions as well.
 	
- 	
-			
-		
+	Peering link we need to create and check again ???
 	
+ 	
+How to make a Vnet or Subnet a publicly accessible one?
+========================================================
+	-> We can do so by configuring inbound/outbound network traffic rules through which we can set the protocol by which the resource can be accessible outside the Azure. (SSH, HTTPS, RDP,HTTP).
+	-> We can assign public address to the resource (VM, Load balancer, etc.,)
+
+What is a Static IP Addresses?
+-------------------------------
+	-> Static IP Address is one which is assigned to a device/resource manually and it remains the same for the resource to be accessed with in the network.
+	-> The same in case of Dynamic IP Addresses, everytime the resource connects to network gets assigned a new IP address which is done by DHCP (Dynamic Host Control Protocol).
 		
-		
+			-> Static IP Address are useful when we want the IP address of a resource to not to be changing, and we want to connect to the resource with the same IP address without relying on DHCP renewals.
+			-> To ensure better continuous accessibility, this would be more useful.
+	
+	In a Subnet created, there can be some public IP addresses as well as some private IP addresses.
+	
