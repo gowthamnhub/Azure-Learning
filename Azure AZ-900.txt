@@ -986,3 +986,27 @@ What is a Static IP Addresses?
 	
 	In a Subnet created, there can be some public IP addresses as well as some private IP addresses.
 	
+Let us see more on the Azure Network Security Features:
+=======================================================
+Azure DDoS Protection
+----------------------
+		What is DDoS - Distributed Denial of Service 
+		---------------------------------------------
+			-> It is an attack that tries to send huge amount of traffic to the target service or server to cause unavailablity/performance degradation to the application/service. 
+			-> Can also cause huge bill amount if auto-scaling is enabled.
+			
+	To prevent this Azure offers two DDoS protection features, 
+	Basic
+	-----
+		-> Protects against common network layer attacks
+		-> By default enabled
+		-> No additional cost involved
+		-> It automatically identifies the type of DDoS attack and blocks it.	
+		
+	Standard
+	--------	
+		-> We need to enable it by - go to virtual network resource -> DDoS Protection -> Enable it.
+			-> it is a paid service to protect public IP addresses within Vnet.
+			-> It includes alerting when attacks occur, metrics, analytics, reporting.
+			-> Support from DDoS Protection Rapid Response (DRR) team.
+			-> Cost guarantee by receiving service credits if DDoS attack is not able to be prevented or due to that bill amount increased.
