@@ -1010,3 +1010,16 @@ Azure DDoS Protection
 			-> It includes alerting when attacks occur, metrics, analytics, reporting.
 			-> Support from DDoS Protection Rapid Response (DRR) team.
 			-> Cost guarantee by receiving service credits if DDoS attack is not able to be prevented or due to that bill amount increased.
+			
+AZURE FIREWALL
+--------------
+	-> Azure Firewall is a "Managed Network Security Service" to provide Network Level Protection to the resources.
+		-> It is centrally configured and managed, so we can associate one Firewall to multiple Vnets (across subscription) to provide security to all the resources associated with it.
+		-> Basically it provides protection/filtering based on the inbound rules that can be configured within firewall so that only the trusted request pass on the firewall to access and get the response.
+		-> It can be integrated with several Azure Services like Azure Monitor to view the logs, analytics of the inbound requests blocked/allowed or more.
+		-> It is a service with built in high availability and unrestricted cloud scalability.
+		
+	There is also another known Web Application Firewall (WAF) - which is basically for protection specific web application by preventing common web application attacks like XSS, SQL Injection and OWASP listed top 10 web application attacks. 	
+			-> It is tied to http/https protocol.
+	
+	
