@@ -1054,4 +1054,14 @@ Outbound Security Rules
 		65001 - AllowInternetOutBound
 		65500 - DenyAllOutBound	
 		
-		
+AZURE PRIVATE LINK and PRIVATE END POINT
+=========================================		
+	We take a use case, we have a application hosted in a VM in a subnet in a VNet.
+	It talks to a SQL Database (managed service), what we want is we want this communication to take place privately using private IP address, so that the communication will not be exposed outside of Azure.
+	
+		How we can achieve that? Answer is using Private end point.
+		------------------------------------------------------------
+			=> Setup private link for the Azure PaaS service (SQL Database) and use that private end point to connect from VM.
+			=> So by this way, all the data flows happens using private end point stays within the Microsoft backend network and does not go over the internet.
+				
+		Azure Private Link - is the service can be used for this purpose, but for AZ-900, just the basic knowledge why? when? private link can be useful, how PaaS services can be communicated safe and secure way so that communication stays within the Microsoft backend network not goes outside.		
