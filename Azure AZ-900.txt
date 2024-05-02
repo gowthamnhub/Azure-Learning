@@ -1064,4 +1064,37 @@ AZURE PRIVATE LINK and PRIVATE END POINT
 			=> Setup private link for the Azure PaaS service (SQL Database) and use that private end point to connect from VM.
 			=> So by this way, all the data flows happens using private end point stays within the Microsoft backend network and does not go over the internet.
 				
-		Azure Private Link - is the service can be used for this purpose, but for AZ-900, just the basic knowledge why? when? private link can be useful, how PaaS services can be communicated safe and secure way so that communication stays within the Microsoft backend network not goes outside.		
+		Azure Private Link - is the service can be used for this purpose, but for AZ-900, just the basic knowledge why? when? private link can be useful, how PaaS services can be communicated safe and secure way so that communication stays within the Microsoft backend network not goes outside.	
+
+DEFENCE IN DEPTH:
+=================
+	Defence in Depth is a security strategy which helps to implement security in different layers to ensure more protection to the resources.
+		Perimeter Level: 
+		-----------------
+			-> Even before the request entering our Vnet, filter, block using DDoS, Firewall.
+			
+		Internal Network Security:
+		-------------------------	
+			-> Once its entered Vnet, we can have different subnets to add more security to our private resources/critical resources.
+			-> NSGs can be setup to protect resources communication within the Vnet.
+			
+		Compute:
+		--------
+			-> Secure access to VM by restricting access through SSH keys etc.,
+			-> Implement end point protection to our managed service communication.
+			-> Ensure that OS and software patches applied regularly up to date.
+			
+		Application Level:
+		------------------
+			-> From day one consider having Application security the important one, have necessary Identity Access Management setup.
+			-> Implement security best practices depending on the language and framework.
+			-> Store secrets in Azure Key vault. 
+
+		Data Level:
+		-----------
+			-> Data can be in two states - Rest (when stored), Transit (during transaction). 
+			-> In all the states, enable the encryption to protect the data.
+			
+	By this way, having security features setup at the different layers enables resources to be more protected.		
+	
+	Whenever we talk about security in Azure, Defense in Depth is the one to be followed.
