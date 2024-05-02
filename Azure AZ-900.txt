@@ -1098,3 +1098,19 @@ DEFENCE IN DEPTH:
 	By this way, having security features setup at the different layers enables resources to be more protected.		
 	
 	Whenever we talk about security in Azure, Defense in Depth is the one to be followed.
+	
+ZERO TRUST:
+============
+	-> Microsoft's modern security strategy
+	-> Its principles are;
+			-> Verify explicitly - use all info to verify like location, device, identity, resource, data-classification, time.
+			-> use least privileged access (just the least access to perform the job for the least time)
+			-> Assume breach ( always assume breach, though the communication happens with in VNet, make it encrytion enabled)
+			
+	-> Best practices:
+			-> Human, microservice, device, Vnet any way of communication make sure authentication enabled.
+			-> Continuous monitoring (if breach occur, quickly fix it)
+			-> End to end encryption
+			-> Continuous updates to softwares, devices, security patches applied.
+			-> Automated threat detection and response enabled.
+			
