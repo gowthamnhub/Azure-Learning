@@ -1028,7 +1028,7 @@ AZURE NETWORK SECURITY GROUPS
 	-> 	We have learnt about Azure Firewall which secures from outside of our Vnet with the configured inbound / outbound rules to connect to Vnets. (External Firewall)
 	-> But Network Security Groups all about securing within Virtual Network, that is when we create a VM, we can set inbound rules like (SSH, HTTP, HTTPs) to connect to that machine, by deployment it automatically creates a Network Security Group resource at the background, (vn-vm-nsg) There we can view the inbound rules, outbound rules configured.
 		-> This is INTERNAL FIREWALL right before the resources.
-		-> We can configure within a vnet if suppose we don't a certain VM to connect to a Specific Subnet/VM it can be configured at NSG level.	
+		-> We can configure within a vnet if suppose we don't want a certain VM to connect to a Specific Subnet/VM it can be configured at NSG level.	
 			
 		-> Allow or block traffic based on source/destination IP address, Protocol, Port.
 		-> NSGs are typically attached with subnets, network interfaces.
@@ -1114,3 +1114,28 @@ ZERO TRUST:
 			-> Continuous updates to softwares, devices, security patches applied.
 			-> Automated threat detection and response enabled.
 			
+UNDERSTANDING PRIVATE, PUBLIC and HYBRID CLOUD
+===============================================
+Private Cloud:
+---------------
+			-> All of the resources are hosted on premises and nothing is hosted in the cloud.
+
+Public Cloud:
+--------------
+			-> All the resources are hosted in the cloud and nothing in the on premise.
+			-> No capital expenditure for setting up infrastructure/maintenance, just pay for usage as rental expense.
+			-> All hardwares are owned and maintained by Microsoft, hardwares could be shared between multiple tenants (customers) for their applications. 	
+
+Hybrid Cloud:
+--------------
+			-> Combination of both Public and Private.
+			-> For example, Application could be hosted on premise and it could store/read data to/from Cosmos DB.
+			-> it brings in with different additional complexities like authentication, authorization features to be handled in both the on prem and cloud sides.
+
+Hybrid - Connecting Azure with On-Premise Datacenter
+------------------------------------------------------
+			-> How do we connect Azure with On-Premise?
+					-> With help of VPN and Azure Express Route
+						-> 
+ 			
+				
