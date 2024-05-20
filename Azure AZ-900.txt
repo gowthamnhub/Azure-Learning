@@ -1163,4 +1163,21 @@ AZURE ARC:
 		--------
 			-> If we have a Kubernetes solutions deployed across multiple environments/clouds and we want to manage the configurations at central location.
  			
+AZURE RESOURCE HIERARCHY:
+--------------------------
+	Basically we create a number of resources like VMs, VNets, SQL DBs etc., so to maintain these efficiently.
+		-> All these resources are associated and grouped with a Resource Group.
+		-> All these Resource Groups are associated with the Subscriptions (which helps to manage costs for different resources).
+		-> And we can have multiple subscriptions for organization like for department wise, so these Subscriptions are associated with a Management Group (Centralized way for managing access, policies, compliance for all subscriptions).
+
+Hence hierarchy is;
+--------------------
+		Management Group(s) -> Subscriptions -> Resource Groups -> Resources
+		
+		Note: No hierarchy in Resource Group, but Management Group can have hierarchy like inside a management group, can have another management group.
+		
+		
+		
+		
+		
 				
