@@ -346,7 +346,7 @@ How do we avoid the challenges with deploying these small applications?
 		Docker is Cloud Neutral. (it can be deployed in any cloud environment).
 
 Creating First Container:
--------------------------.
+-------------------------
 Go to Container instances -> Container name, quick start image (hello world) -> resource group -> Create -> once done we can copy the IP address and load the IP in browser -> to view the Azure Container instance up and running
 
 		
@@ -1135,7 +1135,32 @@ Hybrid Cloud:
 Hybrid - Connecting Azure with On-Premise Datacenter
 ------------------------------------------------------
 			-> How do we connect Azure with On-Premise?
-					-> With help of VPN and Azure Express Route
-						-> 
+					-> The two important services help us for this;
+						1. VPN (Virtual Private Network)
+						2. Azure Express Route
+VPN:
+----
+	-> When we connect via VPN from on premise to cloud, the communication that takes place is encrypted and over public internet.
+		-> To establish VPN connection we need two devices one to be installed on premise and the other in cloud.
+			-> VPN device (on premise)
+			-> Azure VPN gateway (cloud).
+			
+		Note this communication happens over public channel(internet), if suppose we need a private connection and high bandwidth how can we do that?
+
+	Thats where we can go for Azure Express Route.
+
+Azure Express Route:
+---------------------
+		-> Provides very high security (private connection between onprem to cloud)
+		-> Provides very high bandwidth
+		-> Communication is not encryted, if we want encrytion that becomes the responsibility of the service or application sending the data, the channel itself do not do encrytion as VPN.
+
+		
+AZURE ARC:
+----------
+	This is a service or solution offered by Azure to centrally manage the infrastructures across multiple environments/clouds including on premise resources.
+		Example:
+		--------
+			-> If we have a Kubernetes solutions deployed across multiple environments/clouds and we want to manage the configurations at central location.
  			
 				
