@@ -1176,6 +1176,16 @@ Hence hierarchy is;
 		
 		Note: No hierarchy in Resource Group, but Management Group can have hierarchy like inside a management group, can have another management group.
 		
+In Portal -> we can check the subscriptions in Subscriptions screen, we can see which subscription are we in, its current cost, status associated with it.
+
+For Management group -> go to management group -> Create -> Provide name details -> Create
+We can Add Subscriptions to it using Add subscription option. 
+
+	Policies can be assigned at each levels Management, Subscriptions, Resource Groups using policies options -> all these are assigned to Resource levels.
+	
+	
+
+
 		
 		
 		
