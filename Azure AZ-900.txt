@@ -1291,7 +1291,68 @@ Two important concepts when we talk about identity management;
 					-> something you have - trusted device.
 					-> something you are - fingerprint, facescan.
 					
+CONDITIONAL ACCESS:
+====================
+	-> Whenever the user tries to login, they give out three signals;
+			-> What role level they are in? (if admin/user/super user etc.,)
+			-> Where are they are trying to login(location)? (if from same usual country, or from different place)
+			-> Which device is it? (usual login device or some new unknown device first time they login)
+			
+		Based on these Azure AD can be configured for intelligence so that the access can be denied or MFA can be mandated?
+			
+			This feature is available with Azure AD Premium P1 or P2 licenses.
+			
+Azure AD - Portal we can search for it and can get on to it - Microsoft Entra ID (formerly Azure AD).
+		 -> Can see there is already user created with my name and Global Administrator role assigned.
+		 -> We can add users, assign roles (many predefined ones)
+
+		We can see the subscriptions are associated with Active Directory,it can also be changed when we have multiple ADs.
+
+AZURE AD DS(Azure AD Domain Services)
+--------------------------------------
+	-> We have seen the difference between AD and Azure AD services. 
+		
+		What is this Azure AD DS mean?
+			-> Azure AD is basically the toned-down version of AD, not exactly the same.
+				Some services are not offered in the Azure AD basic version like below;
+					-> AD has hierarchical with OUs (org units) and GPOs (Group policy objects) whereas Azure AD is flat structured.
+					-> Azure AD (Web based authentication protocols - OAuth, SAML, Open ID) vs AD (Kerberos, LDAP, NTLM)
 					
+				What if we want to have advanced features that are offered in AD like Managed domain services, domain joining, group policy, LDAP, Kerberos Authentication, then we can go for Azure AD DS.
+				
+		When we don't need of any complex features and just basic AD in cloud, then can go for Azure AD else need to go for Azure AD DS.
+
+ROLE BASED ACCESS CONTROL:
+==========================
+	-> As the name suggests, the access would be based on the roles assigned to the user. 
+	-> So a role assigned to user at the Management Group level would be rolled down to all the next levels as well (Subscriptions, Resource Groups, Resources). 
+	-> Basically Role Assignment has 3 parts;
+		=> Who? (principal)
+		=> What permissions? (role)
+		=> What scope? (resource / resource group / subscription / management group).
+		
+	Example:
+	---------
+		If we need to assign same level of access to multiple VMs? How can we do?
+			-> Create all the VMs on a resource group.
+			-> Assign the role to the resource group.
+			-> Assign the role to user.
+			
+PASSWORDLESS AUTHENTICATION:
+=============================
+	-> The Problem with the above seen authentication types is;
+			-> We have to remember the password, then carry the device and things like that.
+			-> To have high security with convenience there are lot of researches going on in the past few years on this Passwordless authentication.
+			The approaches towards passwordless;
+				-> Windows Hello for Business (tied to specific device) - recommended for the enterprise users who do their tasks on that specific machine and only in that machine the application/services would be accessible.
+				-> Microsoft Authenticator App (Android or iOS) to get authentication.
+				-> FIDO - Open Standard for Passwordless Authentication.
+				   FIDO2 - enables users to use common devices to authenticate to online services.   		
+
+To remember:
+-------------
+	-> Subscription has trust relationship to Azure Active Directory which provides the authentication, authorization to the application/services.			
+		
 				
 		
 		
