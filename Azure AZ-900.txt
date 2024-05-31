@@ -1213,6 +1213,87 @@ Management Groups:
 	-> All the constraints applied on Management Group level inherits to subscriptions to the resource levels.
 		-> All subcriptions in a Management Group should have same Azure AD tenant (we will see it more detail in next section).
 		
+MICROSOFT DEFENDER FOR CLOUD:
+==============================
+	It is formerly known as Azure Security Center and Azure Defender, basically for identifying the security related issues/threats on cloud configuration or resources or applications deployed and protect those effectively.
+
+		-> There are two important terminologies in this;
+				-> CSPM - Cloud Security Posture Management
+				-> CWP  - Cloud Workloads Protection
+				
+	CSPM - mainly focuses on the identification of threats on the cloud configurations, while configuring the azure resources if it has followed all the best practices to ensure it is secured enough.
+			-> like if its created in a private network, and the confidential resources are not public facing via internet.
+			
+	CWP  - mainly focuses on the security threats identification on the applications thats deployed.
+
+		This service provides many features including threat identification and also "Fix" button to fix most of the issues on a click.
+			-> This is not just a Azure cloud security feature, this can be used for onpremise, hybrid cloud, other cloud protection service as well like for AWS too.
+			
+	It also helps us with continuous assessment and secure score, higher the score would be better.
+	Defends most of the threats which are about come in to affect the workloads and resolves them by itself, triggering alerts to notify the respective people to take further set of actions.
+		-> Provides us with recommendations.
+		
+KEY VAULTS:
+===========
+	-> Azure Key Vault is the service used for storing the secret keys (API Keys), passwords, database connection string, certificates to be used by the applications.
+	-> Basically it is not recommended to store secret keys/passwords in the application code/configuration, so to store such details this service can be used.
+	-> Access monitoring and access control for secrets.
+	
+AZURE AD IDENTITY MANAGEMENT IN AZURE:
+=======================================
+	-> So in Cloud, we have resources, and we have identities.
+		-> A Resource would be accessed by human or non-human (another cloud resource/server).
+		-> We want our resource to identify who is trying to access and if they are actually valid user to get accessed.
+	
+	-> How do we identify users in the cloud?
+	-> How do we configure the resources that the user can access?
+	-> How can we configure what actions the user can perform on the resource?
+		
+These are being provided by the Azure Active Directory Service.	
+
+Two important concepts when we talk about identity management;
+--------------------------------------------------------------
+	Authentication - is the right user?
+	Authorization - is the user have right access?
+	
+	Think of this, is it good solution for the application to store its own user/credentials details within itself?
+		-> That might not be good one.
+		
+		Wouldn't it be better the user credentials are stored in a centralized location and they can also be given access to multiple apps/services.
+		
+			-> Thats where this comes - "Centralized Identity Provider".
+			-> SSO - Single Sign On - using the same credentials the user can access multiple applications/services.
+			
+			
+			
+	Before the emergence of the cloud, one of the most popular centralized Identity Providers is "Active Directory" which is a Microsoft's Proprietary service.
+		-> Stores user credentials, access rights.
+		-> Provides Authentication, Authorization Service.
+		-> We can create groups and associate users with that and manage permissions/accesses.
+		-> Provides SSO service as well.
+	
+	Active Directory Federation Service (AD FS) - Single Sign-on Service.
+			-> Enables you to login to multiple service with the same credentials.
+			
+		This is still most popular with on-premise applications.
+
+	Azure AD - is the Active Directory service in the Azure.
+			-> Controls enterprise users and their accesses to applications/resources.
+			-> Supports Microsoft O365, Azure.
+			-> 99.9% availability SLA (premium).
+			
+		Build applications and enable them to use SSO via Azure AD.
+		
+	Azure AD Connect: Synchronizes on-premises AD with Azure AD.
+
+	Azure AD MFA - provides Multi Factor Authentication enabled for the applications.
+					-> something you know - password
+					-> something you have - trusted device.
+					-> something you are - fingerprint, facescan.
+					
+					
+				
+		
 		
 		
 				
