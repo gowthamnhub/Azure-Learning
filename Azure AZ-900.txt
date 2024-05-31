@@ -1184,9 +1184,34 @@ We can Add Subscriptions to it using Add subscription option.
 	Policies can be assigned at each levels Management, Subscriptions, Resource Groups using policies options -> all these are assigned to Resource levels.
 	
 	
-
-
+Resource Groups:
+-----------------
+	-> multiple resources can be part of a resource group.
+	-> resources can also be moved to different resource group as well, but simultaneously one resource can be part of only one resource group.
+	-> Resource group can be part of a subscription, it is also can be moved between different subscriptions we have.
+	-> It can have resources from multiple regions, whenever resource group is deleted, all the resources part of it gets deleted.
+	-> Any permissions applied on resource group levels inherited to resource levels as well.
+		-> we will see this during the Active Directory sesssions.
+	-> To note down a point, resource groups (like Management groups) are not charged, only resources have cost associated with it.
+	-> Tag names can be given to resources/resource groups for better organization of resources management (like department, environment, projects(it is for projA/projB)).
+		-> But these names entered at the resource group level are not inherited to resource levels.
 		
+Subscription:
+--------------
+	-> Once we have Azure Account created, it is the subscription that connects our account to the resources.
+	-> so we need to have a subscription to make use of the Azure Resources.
+	-> An account can have multiple subscriptions, multiple account administrators for managing it.
+	-> We may need to different subcriptions when we want to have seperate managing of resources, billing, reports, policies for different department basis, projects.
+	-> Two subscriptions cannot be merged to one, but we can move resources/groups between subcriptions.
+	-> There is a quota limit of resources for different resources for subcriptions level like 25k VMs for a certain region, if we need to have more or increase it we need to create a new subscription from that we can have more VMs created for that region.
+	-> Spending Limit: Prevents over spending of credit limit. Azure Free account has $200.
+	
+Management Groups:
+------------------
+	-> Helps to provide policies, accesses for all the subcriptions associated with the management groups.
+	-> Basically all the subcriptions should be part of the Management group, and it can also have hierarchy of Management Groups.
+	-> All the constraints applied on Management Group level inherits to subscriptions to the resource levels.
+		-> All subcriptions in a Management Group should have same Azure AD tenant (we will see it more detail in next section).
 		
 		
 		
