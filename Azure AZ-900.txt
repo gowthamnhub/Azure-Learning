@@ -1469,7 +1469,31 @@ One important thing to note;
 AZURE BLUEPRINT
 ================
 	-> We have seen about policy in the previous session, but if suppose we want to setup the environments multiple times for different resource groups, subscriptions with same policy, role assignments, ARM template (to setup resources, network etc.,) with same compliance followed.
-	-> Then we can go for Blueprint service offered by Azure, where we can create blueprint with the above artifacts and the team can make use of the Blueprints that are already setup to create/setup the environments and it is just ensured to have all the compliance adhered.	
+	-> Then we can go for Blueprint service offered by Azure, where we can create blueprint with the above artifacts and the team can make use of the Blueprints that are already setup to create/setup the environments and it is just ensured to have all the compliance adhered.
+
+RESOURCE LOCKS:
+===============
+	-> Preventing accidental deletion of resources can be done with the help of using "Locks" setting where we can lock the resource for deletion by using two options - Readonly, Delete.
+	-> Read only - helps the resource would be only readonly.
+	-> Delete lock - ensures the resource can be read, modified but not deleted.
+	-> Again this lock can be set at different levels such as Management level, Resource group, Resource levels.
+	
+PRIVACY DOCS AND INFORMATION PROTECTION:
+========================================
+	-> Three important privacy documents;
+		Privacy Statement - https://privacy.microsoft.com/en-us/privacystatement
+			-> Explains how the personal data stored are processed by Microsoft and what purpose.
+		Product Terms Site - https://www.microsoft.com/licensing/docs/view/Product-Terms
+			-> Terms and Conditions for using Microsoft products/softwares/services.
+		Data Protection Addendum
+			-> Your and Microsofts obligations related to personal stored stored by the applications in azure. Related to Data storing, deletion, retention.
+			
+	-> Information Protection
+			-> Any email, document sent / stored are how it is protected.
+			classify and protect documents, emails by providing what level of encryption to be used, level of access whom should be able to open / denied access, make use of Azure Rights Management(Azure RMS) - integrates with O365, AD to ensure it is being accessed by only the right people. Protection stays with the document, emails independent of the location where its stored.
+			
+			
+	
 						
 
 				
