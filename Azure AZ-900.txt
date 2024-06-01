@@ -372,7 +372,7 @@ Managing Multiple Containerized applications
 				
 	All the Cloud Providers provide Kubernetes Managed Services.
 				
-								EKS - Elastice Kubernetes Service (AWS)
+								EKS - Elastic Kubernetes Service (AWS)
 								AKS - Azure Kubernetes Service (Azure)
 								GKE - Google Kubernetes Engine (GCP)
 
@@ -1389,5 +1389,87 @@ Response Time SLA     NA                  Sev C: 8h                Sev C: 8h, Se
 ProDirect currently offers improved SLA time, Sev C: 4h, Sev B: 2h, Sev A: 1h
 
 Next we will see about Azure Advisor?
+
+AZURE ADVISOR:
+==============
+	-> Basically this service provides us with the Automated Recommendations for better security, reliability, scalability, cost management for our resources.
+	-> Once it provides recommendation, we can take immediate action or postpone/schedule/dismiss the recommendation.
+	-> It also gives with step by step guide to implement those recommendation or fast remediation of the issues.
+	-> It gives with the total score as well, it keeps improving while we implement those recommendations.
+	-> We can also filter the recommendations based on the subscription, resource group, resource wise.
+	-> We can also create alerts for a particular resource group, for a specific category (Cost, Performance, Reliability,Operational Excellence, Security etc.,) and impact levels (High, Low, Medium) to get notified. 
+	
+		For eg:
+		=======
+			Reliability: Prevent from VMs data accidental deletion (where backup is not enabled for a VM)
+			Cost Optimization: 
+						-> If there is a VM or DB server which are underutilized, it gives us with recommendation to size the VM or DB server to right size as per the usage, which can be effective for cost reduction.
+			Cost Optimization:
+						-> If we are using Blob Storage, it would recommend to setup Lifecycle Management so that the older data would be moved from Hot to Archive tiers to reduce cost.
+						-> Also, about unused resources, public IP address to be deleted to save money.
+			Reliability:
+						Create Azure Health alerts to notify you when azure problems affect you.
+						
+						
+AZURE MONITOR:
+===============
+	Basically, it will help us monitor our resources.
+	->It gathers, analyses the logs and metrics.
+		Metrics: if a VM, then CPU utilization, Memory Utilization, I/O Operations happening.
+		Logs: From VMs, OS, Applications.
+		
+	->Pro-active measures could be taken taken based on the log analytics.
+	->We can setup smart alerts (SMS, Email etc.,) for a specific resource, for specific category of logs/metrics captured to take immediate corrective action/even automated corrective action.
+		-> Like if CPU goes beyond 90%, scale up the instances.
+		-> if goes below 60%, scale down the instances.
+	
+Things that can be done with Azure Monitor:
+--------------------------------------------
+	Application Insights: Issues/logs from Applications.	
+	Container Insights : Issues from container instances (AKS, ACI etc.,)
+	VM Insights: Issues/logs from VM instances.
+	Log Analytics: Logs that are analysed using which the issues can be trouble shooted.
+	
+	Using Azure Dashboard, Logs, Metrics data can be visualised using charts/graphs.
+	
+	
+AZURE SERVICE HEALTH:
+======================
+	-> Azure Service Health is the service which provides us the details of the status of Azure Service and the Resource that we have created and using it.
+		-> When we talk about this, we have three hierachical views of this Service Health Status.
+			-> Azure Status - global view of any Azure location is having any issues (https://azure.status.microsoft/en-us/status)
+			-> Azure Service Health - in the portal inside Monitor, where we can view the alerts personalized for us if there are any service that we use in any region and that region has any issues/planned maintenance.
+				-> In above both case, we don't have to do anything to resolve, as Azure itself will take care of those and resolve.
+		    -> Azure Resource Health - which provides us with the alerts for any of the resource that we are using is having any issues, which we can take some action to remediate.
+			
+	Recommendation is to setup alerts for the service health so that we receive notifications over sms, email to act upon or be prepared for those kind of issues.
+
+AZURE POLICY
+=============
+	If suppose I want certain rules to be followed by the resources that I create in the Azure for my organization, then Policy is the service that we need to go for.
+	-> We can create, assign and manage policies at the different levels - Management, Resource Group, Resource.
+	-> That will ensure by evaluating it against the policy and mark if the resource is complaint/Non compliant to take the next action to remediate.
+	
+Initiatives:
+------------
+	We can also group policies to "Initiatives" and that can be assigned to different levels so that group of policies are assigned for the resources.
+
+		There are predefined policy definitions, initiatives definitions available to be assigned/used.
+
+Example of policy:
+-------------------
+ -> I want all the VMs to be not exceed a certain size like 32Gb, so I will be able to create only VM size within that size.
+ -> DB servers should have backup enabled.
+ -> MFA should be mandated for certain accounts.
+  
+One important thing to note;
+-----------------------------
+	-> Policy evaluation is not IMMEDIATE, it takes approx. an hour.
+
+AZURE BLUEPRINT
+================
+	-> We have seen about policy in the previous session, but if suppose we want to setup the environments multiple times for different resource groups, subscriptions with same policy, role assignments, ARM template (to setup resources, network etc.,) with same compliance followed.
+	-> Then we can go for Blueprint service offered by Azure, where we can create blueprint with the above artifacts and the team can make use of the Blueprints that are already setup to create/setup the environments and it is just ensured to have all the compliance adhered.	
+						
 
 				
