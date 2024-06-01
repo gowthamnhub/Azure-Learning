@@ -1354,7 +1354,40 @@ To remember:
 	-> Subscription has trust relationship to Azure Active Directory which provides the authentication, authorization to the application/services.			
 		
 				
+AZURE SUPPORT PLANS AND FEATURES:
+==================================
+	-> Basic, Developer, Standard, Professional Direct (ProDirect)
+		-> previously Basic, Premier, Standard, ProDirect
 		
+	No more Premier plan exist, instead we have Developer plan.
+
+	Feature offered by ALL the plans:
+	---------------------------------
+		-> Create as many support tickets as needed.
+		-> Gets Azure Health Status and Notifications.
+		-> Azure Advisor Services (Best practices)
+		-> Self Help resources (forums MSDN, Stack Overflow).
 		
+	Features offered by only ProDirect plan:
+	----------------------------------------
+		-> Support API (support tickets can be created via programmatically).
+		-> General Guidance from ProDirect Delivery Managers, Service reviews and consultings.
 		
+Some other Difference:
+------------------------
+
+
+Features              Basic               Developer                 Standard                      ProDirect
+----------------------------------------------------------------------------------------------------------
+Cost                  Free                $                         Little More                   Very Expensive
+Scope                 All                 Trial/Non Prod env        Prod env					 Critical Apps
+Email/Phone Support   NA                  Business hours only email  24/7                          24/7
+Architecture Guidance NA                  General guidance           General guidance            Guidance from Delivery Managers
+Response Time SLA     NA                  Sev C: 8h                Sev C: 8h, Sev B: 4h, Sev A: 1h 
+
+
+ProDirect currently offers improved SLA time, Sev C: 4h, Sev B: 2h, Sev A: 1h
+
+Next we will see about Azure Advisor?
+
 				
