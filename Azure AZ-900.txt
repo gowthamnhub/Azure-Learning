@@ -1492,8 +1492,94 @@ PRIVACY DOCS AND INFORMATION PROTECTION:
 			-> Any email, document sent / stored are how it is protected.
 			classify and protect documents, emails by providing what level of encryption to be used, level of access whom should be able to open / denied access, make use of Azure Rights Management(Azure RMS) - integrates with O365, AD to ensure it is being accessed by only the right people. Protection stays with the document, emails independent of the location where its stored.
 			
+COMPLIANCE HUB:
+===============
+	-> Whenever we build any applications, we have to adhere to certain standards, regulations based on the industry and security standards, in addition to corporate and regulatory policies.
+	-> We are building applications and hosting via Azure Services, so Azure Service has to comply with certain standards as well.
+		-> To view the standards that Azure complies to, we can go to the portal - https://servicetrust.microsoft.com/ - Service Trust Portal.
+		
+	-> So above shows what are the standards that Azure complies to.
+		-> But where we can check how do we make our application comply with certain standards, regulations?
+			-> To do that we can start with resources, documentation from Compliance Hub - https://azure.microsoft.com/en-in/explore/trusted-cloud/compliance 
+			-> https://learn.microsoft.com/en-us/azure/compliance/
+			-> https://azure.microsoft.com/en-in/products/blueprints/ - If we want to have resources created that is adhering to certain standards and regulations, we can also make use of the blueprints.
 			
+	So creating resources that is ahdering to compliance is just one part of it, Compliance Management lifecycle is more than that, there are more steps like implement controls, reporting to auditors regularly, manage risks, check compliance against regulations and standards.		
 	
-						
+			For this we can automate this compliance lifecycle management - Azure Compliance Manager - Part of Service trust portal.
 
+IMPORTANT COMPLIANCE STANDARDS
+===============================
+	-> When we visit the compliance hub - https://learn.microsoft.com/en-us/azure/compliance/ - we can find a bunch of compliance offerings, related to global (ISOs), US government, Regional Specific, Industry/Sector Specific (Financial,Health).
+	-> Out of which some of the important ones are related to ISOs	
+			-> ISO:27001 - security controls
+			-> ISO:27017 - security controls for use of cloud services
+			-> ISO:27701 - privacy standards
+			-> ISO:27018 - privacy on cloud.
+			
+		GDPR - General Data Protection in Europe
+		SOC - SOC-1(Auditing Standard), SOC-2   (Service Offering Compliance)
+		HIPAA - Health Insurance Portability and Accountability Act
+		PCI-DSS - Payment Card Industry (Data Security Standards). Applications processing payments.
+		
+AZURE SOVEREIGN REGIONS:
+========================
+	So far the resources we have been creating and using are part of Azure Global (Pay-as-you-go) account that I am using.
+	Is there any other offering/way Azure provides for use.
+	Yes.
+		-> Azure Government (US Government specific), infrastructure would not be shared with any other customers/entities. It will be solely used/accessed by the US government services/contractors who are part of the US government applications/services. 
+			-> Should meet compliance and security of US government.
+		-> Azure China - Specific to China Government, one important thing to note is, it is not operated by Microsoft, but by 21ViaNet, Any service/app use this should Compliy with China Telecommunication Regulation.
+		-> Azure Germany - is no longer accepting customers.	
+
+AZURE MANAGING COST:
+=====================
+	-> When talking of cost, we have two concepts;
+		 CapEx - Capital Expenditure
+		 OpEx - Operational Expenditure
+
+CapEx  - Money Spent to Buy Infrastructure
+------------------------------------------
+	  -> Upfront costs/expenses for running our systems/applications.
+	  -> From building the infrastructure, setting up the servers,networks, power systems, physical, virtual security systems.
+			Examples:
+					-> Setting up own data centers.
+					-> Reserving Azure VM instances for number of years (upfront reservations)
+					-> Leasing Software.
+					
+OpEx - Money Spent to use a service/product
+---------------------------------------------
+	  -> Zero upfront expenses.
+      -> Only Operational costs like Pay-as-you-go model where we pay only for the usage of the resources.
+			Example:
+					-> Azure Functions where we pay only for the invocations/requests.
+					-> We create VM instances when needed, decommission when it is not needed, in those case, we pay only for the usage, we are not reserving it upfront.
+		
+Consumption Based VS Fixed Price Models
+----------------------------------------
+	-> There are two offerings from Azure;
+		-> Consumption based - where we pay for what we make use of.
+				-> Azure Functions - pay for the invocations/requests.
+				-> All the serverless services are Consumption based models.
+
+		-> Fixed Price - where we pay for what we provision.
+				-> Like when we provision a VM, irrespective of we host any application, whether the application hosted is invoked or not, CPU utilized to maximum or not, does not matter once we provisioned the cost starts to get calculated, we have to pay for it.
+				-> When we provision a App Service, we have to choose plans (Basic, Standard, Premium), does not matter we deploy a service to it or not, we have to pay as per the plan that we chosen.
+
+Total Cost of Ownership (TCO) - Calculator
+-------------------------------------------
+	https://azure.microsoft.com/en-us/pricing/tco/calculator/
+
+	Basically, it gives us with approximate comparison of cost between when we own the resources on premises vs in azure.
+	We can provide the total workloads that we have in on premises (servers, network, storage, database) and also we can provide the other cost associated with running the datacenters and applications.
+		-> IT labor, Electricity, Softwares etc.,
+		
+	And considering all these, the TCO give us the savings what we could get if we move the resources to Azure over the period of time.
+		-> We could notice in Azure, we will not have costs over datacenter, electricity, softwares since all of these are managed by Azure (Microsoft) itself.
+		In Azure we could see most of the cost would be around compute, storage, network services.
+		
+	Always on premise would be having more cost associated since, CapEx cost is very huge in this setup.
+
+	
+				
 				
