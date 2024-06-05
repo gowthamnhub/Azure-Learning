@@ -1579,6 +1579,48 @@ Total Cost of Ownership (TCO) - Calculator
 		In Azure we could see most of the cost would be around compute, storage, network services.
 		
 	Always on premise would be having more cost associated since, CapEx cost is very huge in this setup.
+	
+Azure Pricing Calculator
+=========================
+	-> Pricing Calculator - https://azure.microsoft.com/en-us/pricing/tco/calculator/
+		-> it is the place we can go to estimate the cost for the Azure services we can use.
+		-> We can add the different services with different parameters like location, number of instances, hours of usage, number of cores/processor, memory (RAM) to check and calculate the pricing for the service. 
+			-> There would be options presented how the cost can be reduced by using reservation of instances for 1year or 3 years plans.
+			
+		Example of Services:
+		---------------------
+			-> Virtual Machines,
+			-> App Service
+			-> Storage Accounts
+			-> Azure SQL Database
+			-> Azure Cosmos DB
+			-> Azure Kubernetes Service
+			-> Azure Functions (serverless)
+			-> AI services
+			-> Cost Management and Billing.
+			
+Understanding the important factors that affect the cost:
+-----------------------------------------------------------
+	-> Resource Type and its configuration
+			-> what is the resource type, if its 4core, 8core etc., if its hot tier,cold,archive tier (access tiers).
+	-> Usage Meters
+			-> how many hours the instance has been working, how many incoming requests for Azure functions, data ingress and egress (outgoing).
+	-> Azure Subscription
+			-> Free/Pay-as-you-go/Enterprise ? (based on this cost/discount may vary)
+	-> Azure Marketplace
+			-> If we are using any services/applications from Azure Marketplace, the cost for those service/app are decided by the vendors.
+	-> Regions
+			-> Based on the where the instance or service is deployed, the cost would vary.
+	-> Data Transfer
+			-> Data transfer between same region/availability zones are free.
+			-> Data incoming to azure is always free, and outgoing from azure involves cost.
+	-> Reservations
+			-> Based on the instances/service reservation for 1 year/3 year the total cost would be discounted.
+			
+		
+			
+		
+			
 
 	
 				
