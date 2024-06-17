@@ -1582,7 +1582,7 @@ Total Cost of Ownership (TCO) - Calculator
 	
 Azure Pricing Calculator
 =========================
-	-> Pricing Calculator - https://azure.microsoft.com/en-us/pricing/tco/calculator/
+	-> Pricing Calculator - https://azure.microsoft.com/en-in/pricing/calculator/
 		-> it is the place we can go to estimate the cost for the Azure services we can use.
 		-> We can add the different services with different parameters like location, number of instances, hours of usage, number of cores/processor, memory (RAM) to check and calculate the pricing for the service. 
 			-> There would be options presented how the cost can be reduced by using reservation of instances for 1year or 3 years plans.
@@ -1617,8 +1617,35 @@ Understanding the important factors that affect the cost:
 	-> Reservations
 			-> Based on the instances/service reservation for 1 year/3 year the total cost would be discounted.
 			
+Azure Cost Management
+=====================
+	This is a tool in Azure Portal to manage cost of our subscriptions/management groups for effective use of cloud resources.
+		-> Here we can view the cost incurred by our resources at different levels like location basis, resource group basis, subscription basis which costed what? with this details we get an overall view of how our cost is doing.
+		-> Also we can view the usage graph/cost graph which can show us when the usage climbed up, if it climbed up on certain durations, then to analyse based on that to understand if something we can do to reduce the cost effectively.	
 		
-			
+	Controlling Cost:
+	-----------------
+		-> we can also create budget and setup alerts to setup the budget for the resource usage on a subscription/management/resource group scope level.
+		-> And alerts to notify people when it exceeded certain percentage of budget set to take further steps.
+		
+	Recommendation
+	--------------
+		-> It also provides us with recommendations to use resources effective way. - Azure Recommendation
+	
+	Billing details (Invoices), Payment methods can also be viewed.
+	
+Managing Costs - Best Practices:
+================================
+	-> Whenever we plan to deploy a resource in Azure, before we do deploy, we should be aware of its price, how much does it cost? use Pricing Calculator for that.
+		-> When we move from on premise to cloud, use TCO to understand the ownership cost, so we be aware of the cost upfront.
+		
+	-> Then important thing to note is, when we don't need a resource anymore, go ahead STOP or DELETE it. When we stop, we will still be charged or Storage, be aware of it.
+	-> If needed go ahead for reservations to reduce the cost.
+	-> Use Managed Services so that most of the things are taken care by Azure itself, else IaaS more responsibilities on our side which can add more cost.
+	-> use Cost Analysis, Alerts, Recommendation effectively to efficiently optimize azure cost.
+	-> Group resources based on cost ownership, subcription, Resource groups, tags so that we can track the cost incurred effectively based on the different groupings/levels/departments/projects etc.,
+
+	
 		
 			
 
