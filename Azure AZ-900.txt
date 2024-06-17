@@ -1655,8 +1655,28 @@ Tags:
 Windows Virtual Desktop
 ========================
 	-> This is especially helpful for the employees who work remotely, with the virtual desktop employer can provide the access to the employees for the Virtual Desktop which has the necessary security features configured and managed, so that the companies can be sure that their data is not going anywhere out or employees do not use their personal laptop which may not be completely secured enough.
+	-> Connect with any device (windows, mac, linux, android over the internet).	
 	-> It uses AD to control the accesses to the employees.
 	-> It also has BYOL (Bring your own license) to help enterprises with existing licenses to use it with the same license.
+	
+Azure Marketplace:
+==================
+	-> When we don't find any service that we want from Azure Services, we can still go to Azure MArketplace to find the solutions/services offered by Microsoft or its partners which are certified and customised for Azure.
+	-> It can be full end to end solutions for a certain purpose and can have flexible costing structure like hourly, monthly etc., basis.
+	-> Applications under different categories, compute, storage, database, Media, IOT, Monitoring & Diagnostics etc.,
+	
+Azure Migrate
+==============
+	-> Whenever we want to migrate our applications, resources, databases, data to cloud the first thing we need to do is assessment to understand how we can perform the migration?.
+	-> Once we understand this, then we can go ahead with the migration of resources.
+	-> For performing this assessment and migration execution, the tool provided by Azure are under the umbrella of Azure Migrate.
+		-> There are number of tools under this that helps us doing the migration successfully.
+	
+To Assess - Discovery and Assessment.
+Azure Server Migration - To migrate VMs and servers from on premise to cloud.
+Azure Database Migration - To migrate database services to cloud.
+Azure Web app migrate assistant - To migrate web application to cloud.
+Azure Databox - To migrate data (which can be huge in hexa/peta bytes) if we want to do it in offline mode, then we can get the Databox device from Azure, place the data in it, ship to Azure to get the data transferred/migrated.	
 
  	
 		
