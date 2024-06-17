@@ -1644,6 +1644,23 @@ Managing Costs - Best Practices:
 	-> Use Managed Services so that most of the things are taken care by Azure itself, else IaaS more responsibilities on our side which can add more cost.
 	-> use Cost Analysis, Alerts, Recommendation effectively to efficiently optimize azure cost.
 	-> Group resources based on cost ownership, subcription, Resource groups, tags so that we can track the cost incurred effectively based on the different groupings/levels/departments/projects etc.,
+	
+Tags:
+------
+	-> These are basically to group resources based on the certain way to manage resources efficiently.
+	-> We can add tags to each resource/resource group/subscription levels, but resource group level tags do not get inherited by default to the individual resource levels.	
+	-> We can also use Policies to Subscription levels to enforce any resource created/modified should need to have certain tags and its respective value provided. (e.g. owner: gowtham, environment: production, businessUnit: Tirupur).
+		-> Require tags, Append certain tags - some policies that can be applied and enforce the tags to be provided for resource.
+		
+Windows Virtual Desktop
+========================
+	-> This is especially helpful for the employees who work remotely, with the virtual desktop employer can provide the access to the employees for the Virtual Desktop which has the necessary security features configured and managed, so that the companies can be sure that their data is not going anywhere out or employees do not use their personal laptop which may not be completely secured enough.
+	-> It uses AD to control the accesses to the employees.
+	-> It also has BYOL (Bring your own license) to help enterprises with existing licenses to use it with the same license.
+
+ 	
+		
+		
 
 	
 		
