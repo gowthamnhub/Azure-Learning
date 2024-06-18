@@ -1676,7 +1676,105 @@ To Assess - Discovery and Assessment.
 Azure Server Migration - To migrate VMs and servers from on premise to cloud.
 Azure Database Migration - To migrate database services to cloud.
 Azure Web app migrate assistant - To migrate web application to cloud.
-Azure Databox - To migrate data (which can be huge in hexa/peta bytes) if we want to do it in offline mode, then we can get the Databox device from Azure, place the data in it, ship to Azure to get the data transferred/migrated.	
+Azure Databox - To migrate data (which can be huge in hexa/peta bytes) if we want to do it in offline mode, then we can get the Databox device from Azure, place the data in it, ship to Azure to get the data transferred/migrated.
+
+Azure DevOps:
+==============
+	-> DevOps is basically a set of practices helps to combine Development and Operations.
+		-> It brings three essential teams work together - Dev(code + testing) + Business (BA/PMG) + DevOps (sets up environment/infrastructure provisioning, CI, CD, Monitoring etc.,)
+	We will see more DevOps practices in the following sessions.
+
+CI, CD in Azure:
+=================
+	-> One of the key principle of DevOps is orchestrating CI/CD pipeline.
+		
+	Continuous Integration:
+	------------------------
+		-> Whenever we do code commit, we have to run unit tests, integration tests and package it to get quick feedback if any bad code then quickly fix and recommit it.
+		
+	Continuous Deployment:
+	-----------------------
+		-> Once above is done, we can trigger it to deploy step where the package can be deployed to any of dev, test environments and here also some automated tests can be run to make sure the system is working fine.
+		
+	Continuous Delivery:
+	--------------------
+		-> After the above step, it will go for the Testing Approval, once after the testing team confirm if all fine, then this take place where the code/package gets deployed to production.
+		
+	One of the service in Azure helping us in performing these steps is Azure DevOps.
+	
+		-> Azure Repos: is a reponsitory offered by Azure which has good integration with Azure Pipelines, Also GitHub a good alternative for Azure Repos.
+				-> Both GitHub, Azure Repos are git based repository.
+				
+		-> Azure Pipeline: Here we can Orchestrate CI, CD Pipeline - unit tests, Integration tests running, recently GitHub Actions is one of the alternatives doing the same.
+		-> Azure Boards: Scrum, Agile, Kanban models to maintain feature/product backlogs, sprint management.
+		-> Azure Test plans: Automated test tool to check the quality of the software.
+		-> Azure Artifacts: Artifact repository to store artifacts.
+
+Infrastructure as Code (IAAC):
+------------------------------
+		-> We know one of the key practice of DevOps is to provision environment and that is not a single activity, because we may need to setup few Dev environments (dev1,dev2 etc.,) Test environments, UAT environments, PSR environments, like wise.
+		-> so if we do this provisioning manually, high level of chance that something can go wrong, so we need to treat Infrastructure setup also as a Development code, so that we can have script created and run to set the environments, and script can be version controlled to be retrieved when we run what script to setup the environments.
+		-> One of the tool offered by Azure to perform this is ARM (Azure Resource Manager) templates where the resources can be given in json format and executed to provision the given environments. Also Azure CLI, Powershell can be used, it is not powerful comparing to ARM templates.
+
+			Terraform - open source tool to provision environments across cloud platforms.
+			
+			
+		Once Infrastructure is done, it is Configuration Management - to install the right tools on the provisioned resources.
+			-> Tools: Chef, Puppet, Ansible
+			
+ARM Templates
+==============
+Azure Resource Manager - Deployment and Management Service for Azure.
+				-> Any time we create resource in Azure it goes through Azure Resource Manager internally. All actions to any resource go throug ARM.
+				-> Azure Resource Manager - understands ARM templates.
+				-> When we create manually we get the option to download the template of it as well which is in JSON format.
+				-> Using JSON script, the resources can be created.
+				-> This helps to create a same set of resources for multiple environments (Dev, QA, Stage, Prod) with exact same configuration, manually provisioning this could be error prone.
+				-> One of the important thing is, we can have it version controlled so that we can keep track of when, what changes has been setup.
+				-> ARM automatically handles creating the resources in the right order though the order in JSON varies.
+				-> Rolling back is auto handled when there is a script error, which then can be corrected and re executed.
+				-> Parallelizes creation of resources when possible.
+	This helps Declarative Approach to Infrastructure as Code.
+	
+		The same setup can be done with the help of Powershell and Bash, but we need to write the script and all the ordering of the resources, even the roll back handling have to be correctly done else could be undeleted and cost would incur.
+
+			-> Best way is to use ARM templates as it handles the right order of creating resources as well as rolling back when there is any issues.
+			
+Azure Portal, Mobile, PowerShell, Azure CLI, CloudShell
+========================================================
+	Azure Portal: 
+			-> We have been using it so far, web based portal for creating, managing azure resources. Problem with it is, the actions cannot be automated, once a resource is created, for second time again need to go through with same steps to create.
+		
+	Azure Mobile: 
+			-> Same as Portal, infact subset of portal features to iOS and Android App.
+			-> Provides more convenience of using it in mobile.
+			
+	Azure Powershell:
+			-> This is recommended for team familiarised with Windows Administration.
+			-> Using Powershell script to manage resources.
+			-> It is cross platform (Windows, Linux, macOS)
+			
+	Azure CLI:
+			-> This is recommended for team familiarised with Linux Administration.
+			-> Using Bash script to manage resources.
+			-> It is also cross platform (Windows, Linux, macOS)
+
+	Azure Cloudshell:
+			-> From portal it can be accessed, comes with preinstalled features of CLI, Powershell, can be switched between them in this and write respective script for managing resources.
+			-> Runs in all modern browsers.
+			
+DevTest Labs:
+=============
+	-> Azure Service for quick setup for provisioning and configuring of environments for specific purposes.
+		-> uses ARM templates for quick creation of resources.
+	-> Can be configured to CI/CD pipeline so that whenever a deploy happens automatically quickly setup the environments for running specific testing and automatically shut down when not needed, or scheduling auto deletion/shut down of environment to minimise cost.
+	
+Use case:
+----------
+		-> Quickly setup 100 VMs for some testing.
+		-> Quickly provision environments for training and demos.
+		-> Quickly provision environment with old software for testing application with it.
+		-> Provision environment with certain load for load testing.	
 
  	
 		
