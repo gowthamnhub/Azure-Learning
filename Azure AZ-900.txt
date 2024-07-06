@@ -37,7 +37,7 @@ Think about Cloud?
 -------------------
 	-> You don't need to pre-setup for Peak load, you will just need to increase the resource as the load increases, it goes vice versa when load decrease. CAPITAL EXPENSE changes to VARIABLE EXPENSE. Helps on-demand resource provisioning.
 	-> which obviously helps the problem that we don't need to plan way ahead. Stop guessing the future.
-	->  Go global in minutes. (just on a click app is deployed to multiple regions around the world!!!)
+	-> Go global in minutes. (just on a click app is deployed to multiple regions around the world!!!)
 	-> Stop running and maintaining Data Centers.
 	
 Microsoft Azure
@@ -138,8 +138,6 @@ KEY CONCEPTS OF VIRTUAL MACHINES:
 	4. Disks - Attach Virtual Disk similar to HDD attach to laptop - this is done while creating a VM, we have a tab named "Disks" there we can create or attach an existing disk to the VM - A Data disk can also be created from Disks resource.
 		-> There are different storage types available (Premium SSD, Standard SSD, Ultra Disk, Standard HDD).
 
-
-
 Installed a web server to our VM - my-first-vm - nginx
 
 nginx - is a popular web server similar to IIS (mainly for windows based apps), but nginx is light weight and cross platform supported.		
@@ -171,7 +169,7 @@ When we want to increase availability for the application?
 				-> Standard SSD Managed Disk - 99.5%
 				-> Standard HDD Managed Disk - 95%
 	
-	If we need more availability, we can have two or more instances of VM running in Same Availability Sets	(grouping of resources based on Fault Domain and Update Domain)
+	If we need more availability, we can have two or more instances of VM running in Availability Sets within a region where we can do grouping of resources based on Fault Domain and Update Domain.
 		Fault Domain: The area of the data center which uses same power source and network Switch.
 						It talks about physical boundary for the resource/instances so that the resources are spread across multiple fault domains to avoid any particular fault domain's failure does not affect all the instances and help us with high availability.
 						
@@ -424,7 +422,7 @@ AZURE STORAGE
 	There are three basic storage types;
 		Block
 		-----	
-			-> like out hard disk storage
+			-> like our hard disk storage
 			-> Typically, one disk can be connected to one VM
 			-> But a VM can have multiple disks connected.
 		File
@@ -555,7 +553,7 @@ AZURE BLOB STORAGE:
 	It is object storage in Azure. 
 	What does it store? helps saving massive amount of unstructured data like (text file, image files, media files).
 	Structure: Storage Account -> Countainer(s) -> Blob(s)
-	It is highly scalable, provides data resiliency, data security with features such as RBAC and integration with Azure Active Directory.
+	It is highly scalable, provides data resiliency(continuous operation despite failure), data security with features such as RBAC and integration with Azure Active Directory.
 	
 	Different types of BLOB:
 	------------------------
@@ -693,7 +691,7 @@ Very small downtime - RTO (5mins)
 
 Very small data loss - RPO(1 min) 
 little downtime is acceptable - RTO (15 mins)
-	-> We can go for Warm standby, where the redundant system is partially operatational, automatica synchronize data, it won't immediately ready to take up the load when primary server goes down, takes slight amount of time to start picking the load once primary goes down.
+	-> We can go for Warm standby, where the redundant system is partially operatational, automatically synchronize data, it won't immediately ready to take up the load when primary server goes down, takes slight amount of time to start picking the load once primary goes down.
 
 Very small data loss - RPO(1 min) 
 few hours downtime is acceptable - RTO (few hours)	
@@ -843,7 +841,7 @@ Next, Lets start discuss about OLAP (Online Analytics Processing)
 NoSQL Database:
 ---------------
 	-> it means "not only SQL".
-	-> main feature of NoSQL database is it does enforce fixed schema to be required for data storing, even without schema, flexible schema which can evlove over a period of time for data storing.
+	-> main feature of NoSQL database is it doesn't enforce fixed schema to be required for data storing, even without schema, flexible schema which can evlove over a period of time for data storing.
 	-> Meaning each row of the table/collection can have different types, number of columns, relationship with other tables, everything can be different, which is not in the case with SQL for maintaining the data integrity.
 
 What does it help in achieving?
@@ -951,7 +949,7 @@ Creating Virtual Network in Portal
 			
 	There are several other options like services but this is not sure, I think may be when we select multiple services, those service end points will have access to the resources in our Vnet (subnet)
 
-We can also create resources within the specific subnet, for eg; Create Virtual Machine ->	Choose the resource group where Vnet is created (my-first-virtual-network) -> Go to Networking -> Here we will have the option to choose the subnets where we want to this have this resources deployed / part of.
+We can also create resources within the specific subnet, for eg; Create Virtual Machine ->	Choose the resource group where Vnet is created (my-first-virtual-network) -> Go to Networking -> Here we will have the option to choose the subnets where we want to have this resources deployed / part of.
 
 We will have more details around this in next step.
 
@@ -960,11 +958,11 @@ Whenever we create a VM in a Vnet, by default it is assigned to the private subn
 	VMs within the same Vnet can communicate using private IP addresses.
 	We can also configure Public IP addresses to the resources, point to note is we need to pay extra for using public IP address, there are no additional charges for using private IP address.
 	
-	Different VMs in the Vnet can communicate each other via private IP addresses, though they are in different subnets (private ore public).
+	Different VMs in the Vnet can communicate each other via private IP addresses, though they are in different subnets (private or public).
 	
 Suppose we have another Vnet and we want resources in two Vnets to be communicate each other. How is it possible??????
 
-	-> Network Peering Relationship. go to Vnet -> Peerings -> Setup the configuration ton establish the relationship between two Vnets.
+	-> Network Peering Relationship. go to Vnet -> Peerings -> Setup the configuration to establish the relationship between two Vnets.
 	
 	With help of this, different resources in different Vnets can talk to each other, interesting thing to note is these Peering Vnets can be in different regions as well.
 	
@@ -1056,7 +1054,7 @@ Outbound Security Rules
 		
 AZURE PRIVATE LINK and PRIVATE END POINT
 =========================================		
-	We take a use case, we have a application hosted in a VM in a subnet in a VNet.
+	We take a use case, we have a application hosted in a VM in a subnet of a VNet.
 	It talks to a SQL Database (managed service), what we want is we want this communication to take place privately using private IP address, so that the communication will not be exposed outside of Azure.
 	
 		How we can achieve that? Answer is using Private end point.
@@ -1377,12 +1375,12 @@ Some other Difference:
 ------------------------
 
 
-Features              Basic               Developer                 Standard                      ProDirect
+Features              Basic             Developer                 Standard              ProDirect
 ----------------------------------------------------------------------------------------------------------
-Cost                  Free                $                         Little More                   Very Expensive
-Scope                 All                 Trial/Non Prod env        Prod env					 Critical Apps
-Email/Phone Support   NA                  Business hours only email  24/7                          24/7
-Architecture Guidance NA                  General guidance           General guidance            Guidance from Delivery Managers
+Cost                  Free                $                        Little More       Very Expensive
+Scope                 All               Trial/Non Prod env         Prod env			 Critical Apps
+Email/Phone Support   NA                Business hours only email  24/7                    24/7
+Architecture Guidance NA                General guidance           General guidance  Guidance from Delivery Managers
 Response Time SLA     NA                  Sev C: 8h                Sev C: 8h, Sev B: 4h, Sev A: 1h 
 
 
@@ -1390,7 +1388,7 @@ ProDirect currently offers improved SLA time, Sev C: 4h, Sev B: 2h, Sev A: 1h
 
 Next we will see about Azure Advisor?
 
-AZURE ADVISOR:
+AZURE ADVISOR:(Advisor)
 ==============
 	-> Basically this service provides us with the Automated Recommendations for better security, reliability, scalability, cost management for our resources.
 	-> Once it provides recommendation, we can take immediate action or postpone/schedule/dismiss the recommendation.
@@ -1411,7 +1409,7 @@ AZURE ADVISOR:
 						Create Azure Health alerts to notify you when azure problems affect you.
 						
 						
-AZURE MONITOR:
+AZURE MONITOR:(Monitor)
 ===============
 	Basically, it will help us monitor our resources.
 	->It gathers, analyses the logs and metrics.
@@ -1486,7 +1484,7 @@ PRIVACY DOCS AND INFORMATION PROTECTION:
 		Product Terms Site - https://www.microsoft.com/licensing/docs/view/Product-Terms
 			-> Terms and Conditions for using Microsoft products/softwares/services.
 		Data Protection Addendum
-			-> Your and Microsofts obligations related to personal stored stored by the applications in azure. Related to Data storing, deletion, retention.
+			-> Your and Microsofts obligations related to personal stored by the applications in azure. Related to Data storing, deletion, retention.
 			
 	-> Information Protection
 			-> Any email, document sent / stored are how it is protected.
@@ -1504,7 +1502,7 @@ COMPLIANCE HUB:
 			-> https://learn.microsoft.com/en-us/azure/compliance/
 			-> https://azure.microsoft.com/en-in/products/blueprints/ - If we want to have resources created that is adhering to certain standards and regulations, we can also make use of the blueprints.
 			
-	So creating resources that is ahdering to compliance is just one part of it, Compliance Management lifecycle is more than that, there are more steps like implement controls, reporting to auditors regularly, manage risks, check compliance against regulations and standards.		
+	So creating resources that is adhering to compliance is just one part of it, Compliance Management lifecycle is more than that, there are more steps like implement controls, reporting to auditors regularly, manage risks, check compliance against regulations and standards.		
 	
 			For this we can automate this compliance lifecycle management - Azure Compliance Manager - Part of Service trust portal.
 
@@ -1639,7 +1637,7 @@ Managing Costs - Best Practices:
 	-> Whenever we plan to deploy a resource in Azure, before we do deploy, we should be aware of its price, how much does it cost? use Pricing Calculator for that.
 		-> When we move from on premise to cloud, use TCO to understand the ownership cost, so we be aware of the cost upfront.
 		
-	-> Then important thing to note is, when we don't need a resource anymore, go ahead STOP or DELETE it. When we stop, we will still be charged or Storage, be aware of it.
+	-> Then important thing to note is, when we don't need a resource anymore, go ahead STOP or DELETE it. When we stop, we will still be charged for Storage, be aware of it.
 	-> If needed go ahead for reservations to reduce the cost.
 	-> Use Managed Services so that most of the things are taken care by Azure itself, else IaaS more responsibilities on our side which can add more cost.
 	-> use Cost Analysis, Alerts, Recommendation effectively to efficiently optimize azure cost.
