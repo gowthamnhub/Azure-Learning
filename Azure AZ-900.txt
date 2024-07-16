@@ -1149,7 +1149,7 @@ VPN:
 
 Azure Express Route:
 ---------------------
-		-> Provides very high security (private connection between onprem to cloud)
+		-> Provides very high security (private connection between on-prem to cloud)
 		-> Provides very high bandwidth
 		-> Communication is not encryted, if we want encrytion that becomes the responsibility of the service or application sending the data, the channel itself do not do encrytion as VPN.
 
