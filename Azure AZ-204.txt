@@ -16,7 +16,13 @@ One of the important requirement for the exam is to understand interacting with 
 We will talk about Powershell in this video.
 
 What is Powershell?
-
+-------------------
+	-> Powershell is a task automation and configuration management framework. 
+	-> It is built on the .Net Framework initially and works well with Windows platform, Microsoft products, but in the latest release after version 7, Powershell core introduced which is built based on .Net core. This become cross-platform.
+	-> It provides command-line interface and using scripting we can automate the repetetive/administrative tasks, integrates well with AD, Exchange Server, Azure.
+	-> It has cmdlets which are specialized .NET classes to perform specific operations.
+		Eg: Get-Process - gets the list of running processes. 
+	-> To work with Azure SDKs, we need minimum of powershell-7.
 
 Get/Download Powershell:
 ---------------------------
@@ -24,8 +30,13 @@ Get/Download Powershell:
 	
 Downloaded the Powershell (PowerShell-7.4.3-win-x64) from above link and installed.
 When searching for Powershell from Start menu, we can see two options 
-		-> Powershell 7 (x64) - This is the one we installed now.
-		-> Windows Powershell 
+		-> Powershell 7 (x64) - This is the one we installed now. - $PSVersionTable.PSVersion
+		-> Windows Powershell - This is older version 5.1 - $PSVersionTable.PSVersion
+		
+Okay no we have Powershell installed, but this alone is not enough to interact with Azure, we need one more thing - Azure SDK.
+
+Lets learn more about Azure SDK.
+First of all what is SDK?		
 	
 	
 
