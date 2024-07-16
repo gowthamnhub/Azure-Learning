@@ -1,0 +1,31 @@
+Azure AZ-204 - Microsoft Certified: Azure Developer Associate
+
+https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-204
+
+Skills at a glance
+--------------------
+	-> Develop Azure compute solutions (25–30%)
+	-> Develop for Azure storage (15–20%)
+	-> Implement Azure security (15–20%)
+	-> Monitor, troubleshoot, and optimize Azure solutions (10–15%)
+	-> Connect to and consume Azure services and third-party services (20–25%)
+	
+	
+One of the important requirement for the exam is to understand interacting with Azure using Powershell and Bash CLI.
+
+We will talk about Powershell in this video.
+
+What is Powershell?
+
+
+Get/Download Powershell:
+---------------------------
+	-> https://github.com/PowerShell/PowerShell	->https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4#installing-the-msi-package
+	
+Downloaded the Powershell (PowerShell-7.4.3-win-x64) from above link and installed.
+When searching for Powershell from Start menu, we can see two options 
+		-> Powershell 7 (x64) - This is the one we installed now.
+		-> Windows Powershell 
+	
+	
+
