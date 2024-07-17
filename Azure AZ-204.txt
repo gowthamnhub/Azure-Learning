@@ -33,10 +33,93 @@ When searching for Powershell from Start menu, we can see two options
 		-> Powershell 7 (x64) - This is the one we installed now. - $PSVersionTable.PSVersion
 		-> Windows Powershell - This is older version 5.1 - $PSVersionTable.PSVersion
 		
+	Powershell command to determine the powershell version:
+					
+					"$PSVersionTable.PSVersion"
+		
 Okay no we have Powershell installed, but this alone is not enough to interact with Azure, we need one more thing - Azure SDK.
 
 Lets learn more about Azure SDK.
-First of all what is SDK?		
-	
-	
+
+First of all what is SDK?
+--------------------------
+			SDK - Software Development Kit - which consists of necessary tools, libraries, documentation, code samples to build applications using that. It can also have testing tools to perform unit, functional, performance, compatibility testing.
+			
+			Examples:
+			---------
+				=> .Net SDK - For developing applications on the .Net framework
+				=> Java SDK(JDK) - For developing Java applications
+				=> Android SDK - For developing android applications
+				=> iOS SDK - For developing iOS applications
+				
+			So SDKs provide necessary components to build, test, deploy applications efficiently for a specific environment.	
+				
+How to check if Azure SDK installed in system using powershell?
+----------------------------------------------------------------
+		-> Get-Module -Name Az -ListAvailable 
+				-> returns nothing, currently nothing installed.
+		-> simply running "Get-Module" - returns below 3 records in the same format.
+		
+-----------------------------------------------------------------------------------------------------
+ModuleType Version    PreRelease Name                                ExportedCommands
+---------- -------    ---------- ----                                ----------------
+Manifest   7.0.0.0               Microsoft.PowerShell.Management     {Add-Content, Clear-Content...}
+Manifest   7.0.0.0               Microsoft.PowerShell.Utility        {Add-Member, Add-Type…}
+Script     2.3.5                 PSReadLine                          {Get-PSReadLineKeyHandler…}
+-----------------------------------------------------------------------------------------------------
+
+I can run this - 
+
+		"Get-Module -Name Microsoft.PowerShell.Management -ListAvailable"
+
+to get below record;
+
+-----------------------------------------------------------------------------------------------------
+ModuleType Version    PreRelease Name                                PSEdition ExportedCommands
+---------- -------    ---------- ----                                --------- ----------------
+Manifest   7.0.0.0               Microsoft.PowerShell.Management     Core      {Add-Content, Clear-Content…}
+-----------------------------------------------------------------------------------------------------
+
+Okay, as Azure SDK is not installed on my system, how do we install it?
+
+https://learn.microsoft.com/en-us/powershell/azure/install-azure-powershell?view=azps-12.1.0&viewFallbackFrom=azps-6.6.0
+
+Use the Install-Module cmdlet to install the Az PowerShell module:
+
+		"Install-Module -Name Az -Repository PSGallery -Force"
+		
+After installing, running this command - Get-Module -Name Az -ListAvailable
+-----------------------------------------------------------------------------------------------------
+	    Directory: C:\Users\Gowthaman\OneDrive\ドキュメント\PowerShell\Modules
+
+ModuleType Version    PreRelease Name                                PSEdition ExportedCommands
+---------- -------    ---------- ----                                --------- ----------------
+Script     12.1.0                Az                                  Core,Desk	
+-----------------------------------------------------------------------------------------------------
+
+Now we have Latest version of Powershell and Azure SDK installed on our system, still one more thing to be done to start using Azure Commands to interact with Azure.
+					
+					-> Connecting to Azure Account
+					
+	How to connect to azure account from powershell?
+	------------------------------------------------
+		"Connect-AzAccount"
+		
+	On running this command, it opened up a browser to connect azure account, but for me after giving mail id, but it suggested another command to authenticate;
+
+		"Connect-AzAccount -DeviceCode"
+		
+	Then it gave a url to hit and authentication code to be entered. 
+					Yes its Party time - it is connecteddddddddddddddd!!!!!
+					
+Subscription name 		Tenant
+----------------- 		------
+Pay-As-You-Go     Default Directory				
+		
+Note: When we run Azure Cloud shell for interacting with Azure resources, then we do not need to update powershell, Azure Sdks because that is managed by Microsoft it is always kept upto date.		
+
+
+
+		
+				
 
