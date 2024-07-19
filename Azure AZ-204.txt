@@ -116,10 +116,74 @@ Subscription name 		Tenant
 ----------------- 		------
 Pay-As-You-Go     Default Directory				
 		
-Note: When we run Azure Cloud shell for interacting with Azure resources, then we do not need to update powershell, Azure Sdks because that is managed by Microsoft it is always kept upto date.		
+Note: When we run Azure Cloud shell for interacting with Azure resources, then we do not need to update powershell, Azure Sdks because that is managed by Microsoft it is always kept upto date.
 
+Azure Virtual Machines:
+-----------------------
+	Note: VMs are not part of the AZ-204 exam anymore, but we will still spend sometime learning this technology as its basic, essential and interesting.
 
+When we click on "Create a resource" -> it is going to list down number of categories of services that are offered in Azure like Compute, Storage, Networking, Databases, AI + Machine Learning, Analysis...
 
+There is also see more -> on click of this, it is going to list of more services and we could notice under each category there are 10+ services offered like in compute (VMs, Web Apps, Functions, Logic Apps...).
+
+This session we are going to see about "Compute" Services under which we will start off with Virtual machines.
+	Compute service basically allows us to run any workloads on azure. 
+		-> This could be deploying applications using VMs/Web App Service ....
 		
+	"Virtual Machines are basically a virtualized machine of a single physical server and it could be used by different customer/tenants but fortunately the VMs within same physical server cannot be interfered with each other and tightly locked"	
+		
+	Create a Virtual Machine using Portal
+	-------------------------------------
+	Subscription:
+	--------------
+			It always needs a subscription to which this resource has to be billed.
+			-> Subscription is basically the billing unit within azure, through which our Credit Card charged, company gets charged.
+			-> A account can have multiple subscriptions like for different department/projects to charge respectively.
+	 Resource Group
+	----------------
+			-> It is basically logical grouping of the resources, like a folder structure do not have limitation based on geo.
+			-> Resource like VM can have only resource group. 
+			
+	VM name:
+	---------
+		We can have any name, it does not need to be unique across geo, but it has to be unique for the region we are going to create the resource in.
+			-> "azurevm" - is valid if we do not have another VM with same name in the same region.
+			
+	Region:
+	--------
+		When we create a resource, we can select the region in which data center we want the resource to be created, to be noted based on this the resource gets charged.
+			-> Ideally we should choose the region which is closer to our users.
 				
+						"US - can have several regions
+						Europe - can have several
+						Asia pacific - can have several" 
+				
+				Likewise, it goes on....
+			
+	Availability Options:
+	----------------------
+		-> By default the VMs are very highly available, but there could be situation where Microsoft has to apply patches/updates to the servers and that could cause chances for VMs outage for few mins in a month or two.
+		-> As well as there could be some unexpected outage chances due to power supply, network issues accross data center/region.
+			
+	So for this there are 3 levels of availability options provided:
+	----------------------------------------------------------------
+		Availability Sets
+		------------------
+			-> When we have this selected, the VM gets deployed to one server and also get replicated to another VM which is not in same physical server/same rack, but within the same data center it tries to put those as far it could, so that any faults in one server/rack affects another.
+				-> Still it do not address the issues at building level/data center level.
+
+		Availability Zone:
+		------------------
+			-> So based on the region selected, it will list zones available to replicate the application/resource within the selected region.
+					For eg:
+					-------
+						West US(3), Central India, Some of the UK region has 3 zones, but south india do not have one. 
+				-> This helps to address any issues even at the data center/building level.
+				
+		Virtual Machine Scale Sets:
+		----------------------------
+			-> This would replicate the resources across fault domains and zones at scale within the single region.
+			-> So based on the demand it will scale the VMs to meet the demand.
+			
+			
 
