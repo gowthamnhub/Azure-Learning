@@ -191,5 +191,51 @@ This session we are going to see about "Compute" Services under which we will st
 			-> There are many templates available with different OS - Windows, Linux, CentOS ...
 			-> These images/boxes Publisher could be Microsoft/third party partners also.
 			-> You can find different boxes with different templates with different pricing attached as well.
-			-> Unfortunately if we do not find any one that suits our needs, we cannot create a machine without image and do some installation, we must pick one thats listed.	
+			-> Unfortunately if we do not find any one that suits our needs, we cannot create a machine without image and do some installation, we must pick one thats listed.
+
+					But why image?
+					--------------
+						-> This basically helps to quickly provision VM with installed applications, configuration since the template is there, we can scale multiple VMs quickly when there is a need arise with same set of configuration, applications installed.
+		
+		Run with Azure Spot discount:
+		------------------------------
+			-> This offers unused Azure capacity at discounted price, like when I check this box, the machine I selected price decreased to 399.34/month from 715/month.
+			-> But to note down whenever the excess/unused capacity of Azure disappears the machine gets evicted or deleted as Azure will take back the capacity.
+			-> So ideally this is not suited for any mission critical applications, but tolerant for infrastructure loss and low priority applications.
+				-> if an application can complete its task in a week, and whenever it gets instance it can complete the purpose within a week, then this would be suitable as at some point the capacity will be of unused and with less cost also.
+
+				Eviction type:
+				---------------
+					-> Could be when unused capacity disappears.
+					-> When the max cost limit set by us for the VM exceeded by current price of VM.
+
+				Eviction Policy:
+				----------------
+					-> Stop / Deallocate the instance
+					-> Delete the instance.
+					
+		Size:
+		------
+			-> Here we will not be individually selecting the RAM, Storage disk, Processing speed ... for the machine, but we will be provided number of options with different combinations to choose from.
+			-> When I click select All size, I could see it is having 593 options currently for different purposes like General Purpose, Compute Optimized, Memory Optimized with different prices attached to it ranging from 315/month to 817000/month.
+			-> There are different names for sizes A series, B series, D series, E, F ... all for different needs.
+			-> Most of the B, D series machines are for General Purpose				
+			-> In D series also there are Memory Optimized purpose.
+			-> Most of the E series are Memory Optimized purpose.
+			-> F series are mostly for the purpose of Compute Optimized
+			-> Costliest - N series for GPU - cost about 817000/month.
+			
+	B series: 
+			Ideal for workload that do not need 100% full CPU performance all the time.	
+	A series:
+			Best suited for entry level workloads (development, test)
+	E series:
+			The 4th, 5th generation of the E series are for high memory needs.
+	F series:
+			Upto 2X performance boost for vector processing workloads
+	
+	We need to provide Admin account - AzureUser, AzureUser@123.
+	Public inbound ports - By default, resources from the same vnet are not allowed to access the VMs, we can select None to confirm that.
+		-> if suppose we want to provide access then select the ports that are allowed access to the VM.
+			Http(80), Https(443), SSH(22)
 
