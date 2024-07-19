@@ -185,5 +185,11 @@ This session we are going to see about "Compute" Services under which we will st
 			-> This would replicate the resources across fault domains and zones at scale within the single region.
 			-> So based on the demand it will scale the VMs to meet the demand.
 			
-			
+		Image:
+		-------
+			-> Images are basically a file template that contains OS, often with some preinstalled applications, set of configurations using which we can create our VMs.
+			-> There are many templates available with different OS - Windows, Linux, CentOS ...
+			-> These images/boxes Publisher could be Microsoft/third party partners also.
+			-> You can find different boxes with different templates with different pricing attached as well.
+			-> Unfortunately if we do not find any one that suits our needs, we cannot create a machine without image and do some installation, we must pick one thats listed.	
 
