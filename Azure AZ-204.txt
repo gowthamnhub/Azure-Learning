@@ -239,3 +239,209 @@ This session we are going to see about "Compute" Services under which we will st
 		-> if suppose we want to provide access then select the ports that are allowed access to the VM.
 			Http(80), Https(443), SSH(22)
 
+	Then next is "Disks" tab:
+	-------------------------
+		We know what a Disk is?
+			-> it is a storage space used for storing data for accessing it later use.
+			-> There are different types of disks available:
+				1. Premium SSD - preferred for production environments and critical apps
+				2. Standard SSD - preferred for non-prod, dev, test environments
+				3. Standard HDD - preferred for low critical, back up, less frequently accessed environment.
+			-> Based on these types availability of the VM and pricing changes.
+				VMs with premium SSD - qualify for 99.9% availability/connectivity SLA.
+			-> 	The different options contributes to variance in pricing and also to latency that how many reads/writes done to a disk. 
+				
+				"Obvious - Premium SSD > Standard SSD > Standard HDD" (Pricing as well as performance)
+
+		Data Security:
+		--------------
+			How we can ensure data stored in disk are protected and safe from unauthorized accesses?
+			----------------------------------------------------------------------------------------
+				-> This is taken care by default whatever is written to disk is encrypted by using Azure Storage Service Encryption (SSE) and also Azure itself maintains the encryption key. 	
+					
+					-> This is basically Platform-managed key.
+				
+			Even though this security is very much protected, in some case if suppose we want to have control over encryption keys that are generated, stored, used, for that also Azure offers a service where we can maintain the encryption key in key-vault and manage the encryption.
+				
+					-> This is Customer-managed key.
+					
+				For using Customer-managed key, user must create a Disk encryption set and associate it with the managed disks.	
+				
+			There is also 2 layer of protection could be applied by 2 encryption keys one managed by Azure and another by customer.	
+			
+			Any data at rest in the disk is protected by encryption managed by both platform as well as customer, to ensure the data stored is very much protected from unauthorized accesses.
+			
+	Basically the VM comes with the temporary storage disk, and we can also create and attach new disks if needed to store more persistent data, and to note these disks are independent of the VM we attach it so that it can be unmounted and connected to new VM where we can transfer the data/use the data from the disk.
+
+		Please take note of it, the data on the temporary disk that comes with VM are not persistent and data can be lost when deallocated, rebooted...
+		
+	Then next is Networking tab:
+	-----------------------------
+		-> We know the network is essential for any machine to connect to another machine/resource to read/write data to.
+		-> So any time when we create a VM it is going to create a new virtual network or if we already have a vnet, then we can associate it with VM.
+		-> If suppose we want a certain range of IP addresses to be not directly accessible from internet, we can make a subnet of it and configure the inbound rules that way and we can place some confidential resources in it like the database.
+			-> so that the db can be accessible by the inbound rule we set and it can never be connected from internet and only within vnet.
+		-> To note down one thing all the VMs within a virtual network can access each other by default.
+		-> By default virtual machine is accessible only within virtual network and if needed to be connected directly from internet, we can configure the inbound rules and chose the ports via which it can be granted access - HTTP(80), HTTPs(443), RDP(3389) 
+		
+		-> We can also configure load balancing options to configure how the traffic would be routed to this VM.
+		Different types of load balancer:
+		----------------------------------
+				-> Azure Load balancer
+				-> Application gateway (also a type of load balancer)
+				
+
+	Management Tab
+	---------------
+		In this we will do the configurations related to how do we want to manage the VM.
+			-> how do we want the VM to logged in to? or accessed by other resources?
+				-> should it need "System Assigned Managed Identity" which is going to create an identity for the VM in Azure AD and with the help RBAC assigned any resource/user can get access to the VM without having to store the credentials somewhere which is always not a safer option.
+			-> should it be enabled backup?
+				-> we know if it has to be replicated to any other data center to make it more available when needed.
+			-> Should it configured for site recovery?
+				-> should it be keep up and running even during outages.
+			-> Should it stay active for all time or we want to make it shut down after a certain time to reduce the charges incurred?
+				-> if we want it to be auto shut down at 8pm everyday so that it won't be running for all 24 hrs.
+			-> how the patches need to be applied to VM.
+				-> Automatic updates/Manual updates/Azure Orchestrated.
+				
+	Monitoring:
+	-----------
+		Alerts : To enable recommended alerts to have a view of how the VM is working like if its going beyond 80%, if its going below the 1GB of memory.
+		Diagnostics: Boot diagnostics (boot time issues)
+		Health: Enable Application Health Monitoring - to check the health status of the applications.
+		
+	Advanced
+	--------
+		Here we will be giving some advanced options/configurations to the VM like passing a script to be run while the VM is being provisioned.
+			-> To install extensions to VM
+			-> To make the host a dedicated to our subscription, so that the host can have VMs only from our subscription, no other tenant can use it.
+			-> Capacity Reservation: 
+				-> Reservation of capacity for certain amount of time, for which we will be charged from right away though we use it or not. (like a hotel room reservation)
+				
+			-> Proximity placement group:
+				-> This is little bit opposite to availability sets, here we want to place our resources closer to each other for quick communication between them, this would be helpful for low latency requirement.
+
+	Tags:
+	------
+		This is like a meta data to our resource. 
+			Eg: Created by: gowthaman
+				Billing: Az-204
+				Department: IT 
+				
+			Something like this, helpful of logical grouping of what the resource is for, who is the point of contact, subscription that gets billing for this etc..,
+
+	Then Review + Create:
+	----------------------
+			-> Here all the validations run against the resource properties/parameters and once all satisfied and completes then starts deploying the resource. 
+			-> It may take few minutes to complete, once its done, we can see it is not just creating VM but also several resources with it (virtual network, network interface, network security groups, virtual machines) 
+				-> As microsoft azure is more modularized, it creates multiple required components as different modules/resources.
+
+		Now we have the virtual machine hosted in azure, the next question is how do we connect to it?
+
+			-> There are three methods by which we can connect to the VM.
+			
+			-> First of all to view the VM that is provisioned, we can go to virtual machines and select the appropriate subscription and view the VMs created under it.
+				-> Once we open the VM we can see all the details that we configured while creating it.
+				-> There is also a button to "Connect" to the VM and could see different options provided.
+					
+		-> RDP - Remote Desktop Protocol(  to windows/microsoft) helpful to remote connect to windows machine.
+		-> SSH - Secure Shell - This protocol helps to connect to any linux machine.
+		-> Bastion - This is more secure way of connecting to remote machine that are mainly Azure VMs as this helps to connect via something known as "Jump Service" a middle layer via which we can connect to VM.
+		
+			-> Since I am on Windows and by default it has Remote Desktop Connection tool installed I can just open it and enter the public IP that is shown on the VM (overview) that we want to connect to.
+			-> Enter the valid credentials (azureuser/AzureUser@123) and click on connect -> it will open the VM, when we login for the first time, it will take a bit of time to setup out user account, desktop, downloads, documents folders.
+			
+		We can make the VM to web server by installing IIS features (web server features) and once all required installation completed.
+			-> We can directly enter the IP address on the browser to see the server responds.
+				http://13.86.224.25/ 
+				
+	Modify and Stop VM
+	-------------------
+		-> If suppose we have application hosted in our VM, and the demand for the application growing and we would like to increase its size and scale the VM to support the surging demand, how do we do it?
+		-> We can go to VM and click on Resize -> can chose the size that is appropriate and click "Resize".
+				-> It does resizes the machine in few seconds/minutes, this is a disruptive operation and will restart the machine.
+				
+		Deploying the code:
+		-------------------
+			Okay now we have the VM up and running, but as a developer how do we get our code in to it and make it running?
+				-> It has to be manually mostly logging into VM and get our code put it in the IIS folder.
+				-> Else we can have Pipeline created to make our code gets deployed to server from repository directly.
+				-> But actually this is not the best of the place to deploy our code, more easiest would be use web app.
+				
+		Backup:
+		--------
+			We can also Enable Backup to the VM from Backup option -> We need to create a "Resource Services Vault" -> which is like a storage point for storing the data backups.
+				-> We can configure how long we want to have the data backup if its;
+						-> Standard - once a day backup, upto 5 days data retention.
+						-> Enhanced - multiple backups per day, Upto 30 days data retention.
+						
+		Monitoring
+		-----------		
+			-> We will talk about it in detail in the coming lessons.
+		
+		We can stop the virtual machine which would stop the charges being incurred for compute resources, but for storage it would be still charged.
+		
+		Deleting the VM would delete the storage as we have configured it on VM delete, delete the disk storage.
+			-> But ideal way to delete vm would be to delete the resource group so that resources would be deleted which would help in reduction in cost if suppose any underlying resource we forget to delete on deleting vm individually.
+		
+		
+	Azure Resource Manager (ARM) 
+	----------------------------					
+		We have been creating resources via Azure Portal so far. We also there are few more ways for creating resources in Azure.
+			-> Azure CLI
+			-> Azure Powershell
+			-> APIs
+			
+		One commonality between these ways is in all these ways the resource will not get directly controlled/created, but there is a deployment model known as Azure Resource Manager model only via which resources are created/modified.
+			-> Azure Resource Manager is like an engine, which understands only ARM templates and creates the resources.
+			-> But how does this ARM templates get created, so any resource we try to create in Azure using Portal at Review + Create stage, we can see there is a option for - 
+							"Download a template for automation"
+				-> This is basically all the details that we have provided for different fields in json format and it does not hardcode any fields it has parameters tab where all the values will be defined.
+				-> This we can download as well and check it in to any repository as a version control maintenance whenever we have a change in the configuration.
+				-> This is also known as "Infrastructure as Code".	
+				
+		So by any means we try to create a resource that has to go through via ARM engine to finally create/modify resource inside Azure.
+			-> Azure CLI or Powershell uses Azure SDK then to connect with ARM engine to create resources.
+
+	Okay but why ARM template? I can easily go to portal and create a resource right!!!!!!!!
+	    Yes, but what if after a few weeks of creating a VM, you want to create another 100s of VMs with same configuration, 
+		
+			-> first of all will you be able to remember all the configurations you've made?
+			-> how much effort it would be required to create 100s of VMs manually via Portal?????
+		 
+		Its tough right!! thats where ARM templates can be very helpful, we can save these templates and via CLI, Powershell we can read these templates, modify parameters as per the needs and run script to create 100s of VMs with much ease than doing it manually.
+
+			So, it is the repeatability and scriptability that makes ARM templates more powerful to have.
+			
+	Sample Script to deploy using Powershell from https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resources-powershell:
+	------------------------------------------------------------------------------------------------------
+		$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+		$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+		$templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/mic		rosoft.storage/storage-account-create/azuredeploy.json"
+		New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -Location $location
+			
+		This is the command that helps to deploy the resource template -	 		"New-AzResourceGroupDeployment"
+		
+	Add to library:
+	---------------
+		-> This is a feature to store the templates within azure as a resource in a resource group.
+		-> The stored resource is known as "Template Spec".
+		-> The important thing to know is this only stores template.json but not parameters.
+		-> And then this can be shared across projects/subscriptions???
+		-> We can do the versioning of the stored templates as well..
+		
+		-> The same can be achieved with the help of storing the templates in Git repository which provides even more robust version control system with better track of history/changes done.
+		-> Better integration with CI/CD pipeline. Doing these in Azure itself needs more stuff to be done.
+		-> Manage different branches for different projects templates.
+		
+	We have even heard of the term "Bicep" file.
+		-> Bicep is a Domain Specific Language (DSL) which helps to create json templates in a more concise and readable way and with type safe manner as well.
+		
+		
+
+ 	
+		
+		
+				
+				
