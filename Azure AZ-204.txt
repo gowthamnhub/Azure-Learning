@@ -472,12 +472,20 @@ Creating Resource Using Powershell
 			Even with the "DNS name: azure-pshell-vm-ed52ca.eastus.cloudapp.azure.com" able to connect via browser.
 			Once click on "Stop", the remote connection immediately disconnected and not able to connect to machine any more.
 			
-			
-	
-		
+	Okay once VM created, how do we get the VMs running using Powershell?
+			"Get-AzVM"
 
- 	
+	One cool thing is when we select Powershell, even we can run valid bash commands (CLI) because it is supported by Powershell as well.
+
+			So, I can run - "az vm list" in powershell to get the details of VM in JSON format (CLI response format).
+			
+	Creating Resource using CLI (Bash)
+	----------------------------------
+		"az vm list" - list all the vm
+		"az account list" - list of subscription
+		"az group create --name "cligroup" --location "eastUS"
+		"az vm create --resource-group "cligroup" --name "clivm" --location "eastUS" --image "Win2019Datacenter"
 		
-		
-				
-				
+		Here we can get the image list published by azure: https://az-vm-image.info/
+			
+			Document: https://learn.microsoft.com/en-US/cli/azure/ - check for commands here and more details.	
