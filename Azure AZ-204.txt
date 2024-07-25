@@ -438,6 +438,42 @@ This session we are going to see about "Compute" Services under which we will st
 	We have even heard of the term "Bicep" file.
 		-> Bicep is a Domain Specific Language (DSL) which helps to create json templates in a more concise and readable way and with type safe manner as well.
 		
+	
+Creating Resource Using Powershell
+-----------------------------------
+	-> So far in this course we have created resource using Portal and we have seen how we can use ARM templates to create resources in Azure.
+	-> Here we will specifically talk about creating resource in Powershell.
+	-> When we create resource using powershell then we have to ensure our Powershell is up to date.
+
+	-> As part of this session we will use Cloudshell in Azure Portal for creating resource using powershell.
+	-> For cloud shell we can also go to https://shell.azure.com to make use of Powershell/CLI.
+	-> When using cloud shell, it is by default connected to our azure account and it is up to date as it is being maintained by Azure itself.
+	
+	Now lets jump on to creating resource VM using Powershell Commands.
+		Generally powershell commands start with verbs (New, Delete, Get, Set) ....
+		Then a "-" (hyphen).
+		Since we are in Azure module, cmdlets use "Az".
+		
+		Sample command to create resource group - 
+		----------------------------------------		
+				New-AzResourceGroup -Name pwrsgroup -Location "EastUS"
+				
+		To create a VM
+		---------------
+				New-AzVM -ResourceGroupName "pwrsgroup" -Location "EastUS" -Name "pwrsVM" -PublicIpAddressName "myPublicIP" -OpenPorts 80,443, 3389
+				
+		For the other values size, image, it is going to take some default value for creating the VM, it will ask for user and password details.
+
+			We will try this tomorrow morning or sometime later.
+			
+		Yessss!!!!!! able to create resource group and VM with the above script, after running the script it may take a few seconds to show up in the portal.
+
+			But believe once done, I am able to remote it right away with its public IP address configured.	- 172.178.39.183 
+			Even with the "DNS name: azure-pshell-vm-ed52ca.eastus.cloudapp.azure.com" able to connect via browser.
+			Once click on "Stop", the remote connection immediately disconnected and not able to connect to machine any more.
+			
+			
+	
 		
 
  	
