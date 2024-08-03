@@ -489,3 +489,33 @@ Creating Resource Using Powershell
 		Here we can get the image list published by azure: https://az-vm-image.info/
 			
 			Document: https://learn.microsoft.com/en-US/cli/azure/ - check for commands here and more details.	
+			
+Azure APP Service:
+==================
+		In this section, we will learn about another compute service - "Azure App Service" / "Web App".
+		Before we get in to it, lets refresh about the different categories of cloud computing services.
+		
+	IaaS - Infrastructure as a Service 
+	-----------------------------------		
+			-> Here except physical layer, we can have a control over other portions.
+			For eg: 
+					-> Physical Servers, Networking (cables), Storage (disks), Virtualisation - all these are managed by Platform (Azure).
+					-> O/S, Runtime, Middleware, Application (code), Data	- all these we need to take care of.
+		
+	PaaS - Platform as a Service
+	-----------------------------
+			-> Here, even more couple of layers would be abstracted away from us and will be taken care by platform like O/S, Runtime, Middleware, so only Application, Data are our responsiblity.
+			-> We will just need to give the code to Azure for deploying it, all the other aspects are taken care and we will be provided with an agreement from Azure as well about scalablility, availablility of the application with which it will be running.
+			-> We will not be known of underlying machine, configuration in which it is running or any other details.
+			
+	SaaS - Software as a Service
+	-----------------------------
+			-> This is interesting piece, here we will be just consuming the tool/software like O365 (Excel, Word, Outlook...), Also azure portal is one of the SaaS product we use to create azure resources, so likewise many people would be using various SaaS products day to day across different industries.
+			-> As a developer, mostly we would be using IaaS, PaaS category of cloud services offered.
+			
+	There is another called On-Premise -> 
+			-> Here everything from Physical security,servers, storage, networking to O/S, runtime, middleware installations, Application, Data is customer's responsiblity.
+			
+	Lets get into it more by creating Azure Web App.
+
+	
