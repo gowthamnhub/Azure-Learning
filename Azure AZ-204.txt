@@ -516,6 +516,45 @@ Azure APP Service:
 	There is another called On-Premise -> 
 			-> Here everything from Physical security,servers, storage, networking to O/S, runtime, middleware installations, Application, Data is customer's responsiblity.
 			
+			We can also set up CI/CD pipeline with Azure DevOps, GitHub, BitBucket etc., so that once after the code is pushed, the pipeline / GitHub actions starts to integration and deployment of the code to server. 
+			
 	Lets get into it more by creating Azure Web App.
-
 	
+Create Web App:
+---------------
+	We understand so far that web app service is mainly for us to focus more on app development and not to worry more about the underlying infrastructure.
+	
+	->	We will see about how can we create a web app from portal.
+	-> 	We know this is a compute service, so we can find the "Web App" under compute category or as this is one of the most common used resource we can even see it the top itself where we can find "Virtual Machines". 
+	
+	Once we click on "Create" we can see the similar wizard kind of interface we have seen for VM with multiple tabs for configuration.
+	
+	Subscription:
+	-------------
+		-> Subscription under which the web app has to be charged against.
+	
+	Resource Group: 
+	---------------
+		-> Under which resource group this new web app has to be part of.
+
+	Name:
+	-----
+		-> The name has to be unique across azure - since it suffixes with the domain name "xyz".azurewebsites.net.
+		-> Most of the times "new-web-app", "test" etc., will not work.
+		
+	Publish:
+	--------
+		-> Here we can choose if this is "Code", "Docker" or "Static Web App" (html, css) based applications.
+	
+	Runtime Stack:
+	--------------
+		-> We can select the runtime stack that is used for the application (.NET, Java, Ruby etc.,)
+		-> Based on this the OS also can be changed (Linux, Windows) but infact it does not matter which OS it uses as we do not have any control over OS and it all taken care by platform.
+
+	Region:
+	--------
+		-> Region where we want our application to be deployed. (East US, West US, UK South etc.,
+		
+Next we will see about App Service Plan.	
+	
+		
