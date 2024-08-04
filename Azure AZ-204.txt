@@ -523,7 +523,9 @@ Azure APP Service:
 Create Web App:
 ---------------
 	We understand so far that web app service is mainly for us to focus more on app development and not to worry more about the underlying infrastructure.
-	
+	-> Web App / App Service is a fully managed PaaS service focussed on Web and App applications.
+		-> It is available in a range of Free, Basic, Premium and Isolated Environment plans.
+		-> It is a cost effective way to rapidly migrate apps, modernize, build Web and API applications in the cloud.
 	->	We will see about how can we create a web app from portal.
 	-> 	We know this is a compute service, so we can find the "Web App" under compute category or as this is one of the most common used resource we can even see it the top itself where we can find "Virtual Machines". 
 	
@@ -556,5 +558,54 @@ Create Web App:
 		-> Region where we want our application to be deployed. (East US, West US, UK South etc.,
 		
 Next we will see about App Service Plan.	
+
+App Service Plan:
+------------------
+	-> Basically it provides us with the pricing model of the apps and as well as the hosting option.
+
+	-> Okay, so we know when we create a VM, we have the option to choose the size of the machine, disk space, but here with App Service we do not have the option to choose any of these, still the cost associated with a App Service could vary based on these parameters (region, size, disk space etc.,) 
 	
+	-> But we get the option to choose the App service plan and pricing plan/tier.
+	
+	What is Pricing Plan / tier?
+	----------------------------
+		-> Here we get to see different plans with different pricing associated as well we can see what would be the size, memory of the VM instances, SLA (like 99.95%) and about different features like auto scaling, custom domains, daily backups, staging slots.
 		
+			Linux							Windows						
+			-------							-------------
+			1. Free 						1. Free (not for production workloads, for exploring)
+			2. Basic 						2. Shared (not for production workloads,for exploring)
+			3. Premium						3. Basic (For less demanding workloads)
+			4. Isolated						4. Standard (Legacy)
+											5. Premium (For most production workloads)
+											6. Isolated - App service Environment (Advanced Networking and Scale)
+	
+	On comparing windows and linux, you can see there is a shared tier exist for windows which do not exist for Linux, apart from this there is a price difference between these and you can see those below pages.	
+											
+	Here is the pricing page for the app service plans for Linux and Windows.
+	
+	-> https://azure.microsoft.com/en-us/pricing/details/app-service/windows/
+	-> https://azure.microsoft.com/en-us/pricing/details/app-service/linux/
+	
+	We can notice in most of the cases Linux OS plans are way cheaper than windows plans.
+	
+	For eg;
+	--------
+		Basic plans B1, B2, B3 costs 13,25,51$ per month for Linux. (way cheaper)
+		Same for Windows costs 54$, 109$, 219$ per month. 
+	
+	And another thing is the compute power/performance we get for a plan is mentioned in ACU (Azure Compute Units).
+	
+	For eg:
+	--------
+		For Basic B1 we get 100 (ACU), same for Premium v3 P0V3 195* (ACU) 
+			-> meaning we get almost double the power of compute performance in Premium than Basic B1 plan.
+			
+	So now it must be understood that for any Web app to be created we need a App service plan because which is what going to decide on compute/memory resources of the VMs, pricing for the app.	
+
+	Can we deploy multiple applications on a App service plan?
+	----------------------------------------------------------
+		Yes we can, but we need to understand about the total memory we have for the plan and how many apps would make sense to not degrade the performance of the apps hosted in the plan.
+		
+	So for this session we will pick Basic B1 plan and continue in further sessions. 	
+	
