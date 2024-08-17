@@ -690,7 +690,17 @@ Backups
 	One of the main advantage of App service over VM is the ease at which the application can be deployed to it.
 		
 	Lets try to create a Hello world app and to push to our app service in the next session.
+	
+Publish Hello World to our App Service
+---------------------------------------	
+	Created a new application from visual studio -> Hello, world text -> for publishing to Azure App service 
+	"
+		Build -> Publish -> Add a publish profile -> Azure (Host application to the cloud) -> Azure App Service (Windows) -> Connect to azure account (gowthamn91@outlook.com/mSftYrSheeftOne2Three) -> select subscription -> select the app service listed where we want our code to be deployed (JKavin) -> Finish 
+	"	
+		-> Publish profile would be created -> Now click Publish -> which starts publishing the code to the cloud App service directory, once done -> restarts web app -> open the browser go the app service (https://jkavin.azurewebsites.net/) you can see our hello world app opens.
+			
+			
 		
-		
+ 		
 	
 		
