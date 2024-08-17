@@ -555,7 +555,7 @@ Create Web App:
 
 	Region:
 	--------
-		-> Region where we want our application to be deployed. (East US, West US, UK South etc.,
+		-> Region where we want our application to be deployed. (East US, West US, UK South etc.,)
 		
 Next we will see about App Service Plan.	
 
@@ -569,6 +569,8 @@ App Service Plan:
 	
 	What is Pricing Plan / tier?
 	----------------------------
+		-> App Service plan pricing tier determines the location, features(auto scale, custom domain,daily backup zone redundant), cost and compute resources associated with your app.
+		
 		-> Here we get to see different plans with different pricing associated as well we can see what would be the size, memory of the VM instances, SLA (like 99.95%) and about different features like auto scaling, custom domains, daily backups, staging slots.
 		
 			Linux							Windows						
@@ -576,11 +578,11 @@ App Service Plan:
 			1. Free 						1. Free (not for production workloads, for exploring)
 			2. Basic 						2. Shared (not for production workloads,for exploring)
 			3. Premium						3. Basic (For less demanding workloads)
-			4. Isolated						4. Standard (Legacy)
+			4. Isolated	(Dedicated Host)	4. Standard (Legacy)
 											5. Premium (For most production workloads)
 											6. Isolated - App service Environment (Advanced Networking and Scale)
 	
-	On comparing windows and linux, you can see there is a shared tier exist for windows which do not exist for Linux, apart from this there is a price difference between these and you can see those below pages.	
+	On comparing windows and linux, you can see there is a shared tier exist for windows which do not exist for Linux, apart from this there is a price difference between them and you can see it here in below pages.	
 											
 	Here is the pricing page for the app service plans for Linux and Windows.
 	
@@ -608,4 +610,46 @@ App Service Plan:
 		Yes we can, but we need to understand about the total memory we have for the plan and how many apps would make sense to not degrade the performance of the apps hosted in the plan.
 		
 	So for this session we will pick Basic B1 plan and continue in further sessions. 	
+
+Next is Zone Redundancy
+------------------------
+	-> This is relatively new in App service, we have seen about it in VMs where the same VM would be replicated to 3 different data centers to help serving the app if there is any failure with any one of data center where the application is hosted.
 	
+	-> Here the same App service plan (which actually sets up the compute resources) would be replicated to 3 different zones/data centers minimum when we enable zone redundacy.
+		-> This can be enabled only for Premium plans.
+		-> For basic, free plans this cannot be enabled.
+		
+	And please take it into mind that this is deployment time only decision, once it has been deployed we cannot make the App Service Plan zone redundant.
+	
+Deployment
+-----------
+	-> Here we can do the configurations related to continuous deployment of our app whenever we push the code to repository. 
+		-> This can be done with the help of GitHub actions which triggers automatic deployment of code.
+		-> We can provide the related Github account, repository details.
+		
+Networking
+----------
+	-> This helps in configuring the inbound (incoming) and outbound(outgoing) address/requests for out web app.
+	-> By default, our inbound would be public to internet accesses, but we can configure it to have access only from certain virtual networks, restricted by NSGs etc..,
+
+	Enable Network Injection:
+	---------------------------	
+	-> We can also make our web app to be deployed in to a specific Vnet that is in the same region for it to connect to other resources inside the Vnet, but our app would still be accessible to public ip addresses unless we deny public access to our app.
+		-> This would help in several aspects like security, compliance for our web app, could make use of different features of Vnet to control access to and from our app in secure manner.
+
+Monitor + Secure
+------------------
+	-> The main way that our app will be monitored using Application Insights which will log the data about the performance anamolies, errors, and includes powerful analytics tool to provide us with more details to analyse, diagnose the issues, how the app is performing, how the users are using our app etc..,	
+		-> The cost for it would be billed based on amount of data captured/used by App insights and data retention settings we configured. cost would be per GB, per Day...
+		
+Microsoft Defender for Cloud
+-----------------------------
+	-> When we add defender to our app service plan, it would provide cloud native security solution, it makes use of the logs, requests, VM instance and more, detecting threats and ongoing attacks to our resources.
+
+Tags
+-----	
+	This we have already seen above for VMs, like a meta data provider about the resource who the owner, environment, department etc.., for logical grouping/categorizing of resources, helpful for billing purposes.
+	
+	
+	
+		
