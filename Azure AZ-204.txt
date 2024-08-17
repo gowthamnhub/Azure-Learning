@@ -707,8 +707,11 @@ Deployment Slots
 	One thing I tried to deploy Vidly app also to the app service, what happening was, it replaced the hello world app with vidly app code and vice versa.	
 			-> what if we want to have different urls and different code to be deployed to each url.
 			-> The best use case for this kind of thing is, we will have our app deployed to production environment, also to staging/dev environments with different url.
-			probably something like this: https://jkavin-staging.azurewebsites.net/
-			for production: https://jkavin.azurewebsites.net/
+			
+			probably something like this:
+						"https://jkavin-staging.azurewebsites.net/"
+			for production:
+						"https://jkavin.azurewebsites.net/"
 			
 		how do we have that? ofcourse the answer to it is "Deployment Slots" option in App Service -> which is enabled only standard or higher tiers.
 		-> We can add a deployment slot with naming for eg: staging, it will form the unique url other than what is there for other environment (production).
@@ -718,6 +721,7 @@ Deployment Slots
 		And if suppose after all testing we want to move the code to production slot, how do we do it? ofcourse we can publish the code to the respective environment, but you know this would be error prone, but if the code from staging to be smoothly moved to production then thats even better without much manual intervention to make sure error free production deployment.
 			-> In Deployment slot, there is a option to "Swap" the code/app between the two slots which is done very smoothly the respective staging code would be moved to production and prod code would be moved to staging.
 			-> This even helps in having the current prod version in back up environment(slot) so that if at all there is an issue with prod, immediately swap the code from staging (previous production) resolve the issue and then fix it in dev and push to stage for testing.
+
 			
 			
  		
