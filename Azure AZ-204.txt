@@ -650,6 +650,47 @@ Tags
 -----	
 	This we have already seen above for VMs, like a meta data provider about the resource who the owner, environment, department etc.., for logical grouping/categorizing of resources, helpful for billing purposes.
 	
+Review + Create =>	So right now our new web app is created, next session we will see about how do we do manual scaling of our app.
+
+	You can notice from deployment details, that it has created serverFarms which is the App service plan, Sites (our web app/app service) - remember we can have multiple web apps created onto a single app service plan, different components like app insights etc.,
 	
+Manual Scaling
+--------------
+	-> Once deployed we can go to App service plan resource -> there is a option under settings for scaling of our plan.
+		
+		Scale up
+		---------
+			-> With this we can change the plan/pricing tier/stock keeping unit (SKU) of our App service plan like from Basic B1 -> B2/B3/Primary/Standard/Isolated plans based on which compute resource/capacity we would want our plan to be in.
+			-> Obviously it would increase cost respectively.
+			-> One interesting thing during this upgrade of our plan, there would be no interruption to our apps hosted in the plan, it is designed in such a way there would be very smooth transitioning of the app and very rare case there would be minimal performance glitches but most often than not end users would not see any such difference/interruption in the app.
+			-> During upgrade, inbuilt load balancer would keep routing the requests to existing plan and new plan to ensure that there is no downtime until the resources are completely migrated to new plan.
+
+		Scale out
+		----------
+			-> This is the approach where the instances of the plan can be increased to max allowed limit as per SKU.
+			-> For Basic -> it is max of 3, for Premium it can be upto 30 instances.
+			-> When demand arise, the plan would scale upto 3 instances.
+			
+			For Automatic Scaling, we would need to change the plan to premium.
+			
+Opening the web app just created:
+-----------------------------------
+		URL: https://jkavin.azurewebsites.net/ 
+		
+			Since no code is deployed yet, it will pop up with default page with following content.
+				
+				"Your web app is running and waiting for your content"
+				
+		We can also see how many requests are sent to the app from the Monitoring tab -> Key Metrics		
+				
+Backups
+--------
+	App -> Settings -> Backups -> Currently I see it backs up every 1 hour. We can select a restore point to restore the specific backup.
+	
+	One of the main advantage of App service over VM is the ease at which the application can be deployed to it.
+		
+	Lets try to create a Hello world app and to push to our app service in the next session.
+		
+		
 	
 		
