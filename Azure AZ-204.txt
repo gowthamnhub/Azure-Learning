@@ -767,4 +767,42 @@ Settings
 	These details instead of adding in web config/app config/app json, can be stored here for a security purpose for production, and good thing if stored in solution it will be stored in git hub/ repo also, which is unnecessary for the production connections/keys required.\
 	
 	Code can have only dev/staging configurations/keys needed as it would be required for developers.
+	
+TLS/SSL Settings
+----------------
+		-> I do not see an option for this in portal, but what I could see is, this is about Https only settings in App Service, TLS version etc.,
+		-> This will make even though we try to open our app "http://jkavin.azurewebsites.net/" with "http", it will automatically redirect it to "Https".
+		-> In code also we use to have the method app.UseHttpsRedirection() to enable this.
+		
+		When I add a custom domain "gskavin.com" inside our app service then I can access our app like below:
+					"https://www.gskavin.com/"
 					
+		->	When having it, we need to also need to get a certificate for serving the application in secure fashion. But for azurewebsites.net domain we do get a default certificate (wildcard certificate) from Microsoft.
+		-> For certificate there is also something called as self signed certificates for those are not recommended for production, it can be used for dev, testing environments.
+		->	There are different binding types (SNI SSL, IP based SSL)
+				lets learn about these also.
+				
+			Note this custom domain cost: 12$/Year, hence after testing deleting it.		
+
+Autoscaling an App Service
+---------------------------
+	-> We have seen about scaling in earlier sessions also.
+			1. Scale up  (Vertical)
+			2. Scale out (Horizontal)
+		-> Scale up is all about upgrading to higher tier plans, but even then there is always max limit of ACU for a plan.
+		-> But for a better scaling of the app, it is best to go for scale out (horizontal), there are two ways this can be done - Manual and Custom auto scale.
+
+	Manual: 
+			-> Increase the instance count of our app service and based on load balancer decision the requests would be routed to specific instance.
+			
+	Custom auto scale:
+			-> Based on a rule we can scale in / out the instances count for our app, the rule could be based on a metric (%, memory available, http queue length ...,) 
+				like start with 1 instance, when CPU % goes > 70%, increase count by 1
+				the same when CPU % goes < 25%, decrease the instance count by 1.
+				
+			-> There is also other way like during certain days, time range scheduled to run x number of instances like 10 (Mon-Fri between 10am to 5pm) and run only 2 (other days and time).
+
+	We know for a VM there is a VMSS, but one thing to know is here in App service code is deployed, so only instance needs to be up with same code already deployed, but with VM, VM has to be up and then there is a overhead to make the code deployed to new instances, which is not the case with App service alteast it is handled by Azure with much ease.
+
+		
+				
