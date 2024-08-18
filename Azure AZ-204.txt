@@ -724,6 +724,47 @@ Deployment Slots
 
 			
 			
- 		
-	
+Settings
+--------
+	Go to Settings in App Service -> Configuration -> There are different settings that can be configured here.
+		Stack Settings:
+		----------------	
+				-> Stack (.Net, Python, NodeJs, Java)
+				-> Runtime version (.Net version 8,7,6, Asp.Net 4.8 etc.,)
+				
+			When we change any of this, our app would have downtime for a brief amount of time, and also there would be some impact based on the run time/stack changes to our app, if some features that we expect for our app might not exist in some old/new runtime versions and that can cause issues to our app.
+				
+			So this change is a key decision that needs to be done with careful consideration/testing to the production app.
+
+		Platform Settings
+		-----------------
+			Here we can configure the aspects of the environment in which we want our application to run. These settings primarily control the system-level specific configurations that affects how our app functions.
+			
+				-> 32 bit / 64 bit
+				-> Managed Pipeline Version (Integrated vs Classic)
+					-> basically how the request gets processed
+				Classic
+				--------	
+					Client -> Request -> Web server (IIS) -> Asp.Net rutime processes and respond back
+				Integrated
+				-----------	
+					Client -> Request -> Unified environment (Web server (IIS) + Asp.Net rutime) processes and respond back
+
+					-> reduces the overhead and improves performance.
+
+				-> Http vs Https and respective protocol versions for our app.
+				-> Remote debugging feature which can connect to VS to debug production code (not recommended generally) but to be used very carefully as involves security risk.
+				-> Web sockets (on/off)
+				-> ARR affinity.
+				-> If App always ON - (reduces response time if it goes idle between requests)
+				-> SCM / FTP basic publishing credentials
+				
+	Environment Variables
+	----------------------
+		App settings (Key / value pairs that can be used by our app runtime)
+		Connection strings ( DB connection string, storage or etc..,)
 		
+	These details instead of adding in web config/app config/app json, can be stored here for a security purpose for production, and good thing if stored in solution it will be stored in git hub/ repo also, which is unnecessary for the production connections/keys required.\
+	
+	Code can have only dev/staging configurations/keys needed as it would be required for developers.
+					
