@@ -793,16 +793,54 @@ Autoscaling an App Service
 		-> But for a better scaling of the app, it is best to go for scale out (horizontal), there are two ways this can be done - Manual and Custom auto scale.
 
 	Manual: 
+	--------
 			-> Increase the instance count of our app service and based on load balancer decision the requests would be routed to specific instance.
 			
 	Custom auto scale:
-			-> Based on a rule we can scale in / out the instances count for our app, the rule could be based on a metric (%, memory available, http queue length ...,) 
+	-------------------
+			-> Based on a rule we can scale in / out the instances count for our app, the rule could be based on a metric (CPU %, memory available, http queue length ...,) 
 				like start with 1 instance, when CPU % goes > 70%, increase count by 1
 				the same when CPU % goes < 25%, decrease the instance count by 1.
 				
 			-> There is also other way like during certain days, time range scheduled to run x number of instances like 10 (Mon-Fri between 10am to 5pm) and run only 2 (other days and time).
 
 	We know for a VM there is a VMSS, but one thing to know is here in App service code is deployed, so only instance needs to be up with same code already deployed, but with VM, VM has to be up and then there is a overhead to make the code deployed to new instances, which is not the case with App service alteast it is handled by Azure with much ease.
-
+	
+	
+Enable Diagnostic Logs:
+------------------------
+	-> Diagnostic - to identity the problem, root cause, solution, fix/prevent it for future occurence.
+	Ok now we have our App service running, if suppose there is a problem / issue occur how do identify it and resolve.
+		-> Obviously we need to log the information/errors needed for viewing, analysing etc.,
+		-> When we go to our App service -> Overview -> We have Monitoring tab where we have several Key Metrics in graph format displaying, 
+			-> Http 5xx(error)
+			-> Data in, out of our app
+			-> Number of requests, Response time
+			
+		This gives us some details about how our app is performing, any issues, difficulties it is having.	
 		
+	We want to be getting some information out of our app service, for this we have Monitoring menu -> where we can setup alerts based on various signals like CPU time, Response time, Requests, Http errors etc.,
+	
+	There is metrics sub menu where we can view details for different metrics cpu time, response time, data in, data out etc.,
+	
+	App Service Logs
+	------------------
+	 -> This basically provides different logging for the app service.
+		
+		Application Logging
+		--------------------
+			-> This captures events, information, error that captured from the application code itself, it tells about the internal working/behavior of the application itself.
+			-> Can be configured to store in file system/blob or both...
+			
+		Web server Logging
+		------------------	
+			-> This captures events that take place in web server like http requests, responses, errors, but not the internal behavior of the code.
+			-> Can be configured to store the logs in the file system or blob but not both.
+			
+		-> Detailed error can be captured, Failed request tracing (logs failed requests)....
+		-> But we know for App service we do not have access to any physical server/path then how do we access the log file, there is a option provided to download the log files to a ftp path.
+		-> Can configure the Quota (MB) size limit of the logs captured, Retention period (days) for the captured file, beyond the value set the files will be deleted.
+
+This is one type of logging, next is Diagnostic Settings.		
+				
 				
