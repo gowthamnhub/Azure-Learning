@@ -841,6 +841,32 @@ Enable Diagnostic Logs:
 		-> But we know for App service we do not have access to any physical server/path then how do we access the log file, there is a option provided to download the log files to a ftp path.
 		-> Can configure the Quota (MB) size limit of the logs captured, Retention period (days) for the captured file, beyond the value set the files will be deleted.
 
-This is one type of logging, next is Diagnostic Settings.		
+This is one type of logging, next is Diagnostic Settings.
+
+Diagnostic Logs
+----------------
+	-> This helps to collect various logs and stream these in to a destination for analysing, troubleshooting, resolving the issues.		
+	
+	Category of logs:
+	-----------------
+		-> Http Logs (http requests, response, status, client IP address...)
+		-> App service console logs
+		-> App service application logs (application related logs) 
+		-> Access audit logs (logs related to who accessed, what resources accessed, actions performed)
+		-> IP Security Audit logs (logs related to IP addresses, allowed/restricted requests based on IP restrictions configured.
+		-> App service platform logs (logs from platform related to changes in underlying infrastructure)
+		-> App service authentication logs (logs related to authentication, user sign ins, sign outs, accessed URLs, statuses)		
+	
+	Ok now we have configured the list of category of logs to be captured, but where does these get stored for further retrieval and troubleshooting.
+		That is what we have to configure the destination of the device where it has to be storing the logs.
+			-> Log analytics workspace (under Azure Monitor, designed for collecting the logs do analysis, but this is not blob storage)
+				-> to view the data stored we can use KQL Queries (Kusto Query Language) 
+			-> Storage account
+				-> To logs are stored as blobs in container within a storage account.
+			-> Stream to an event hub
+				-> Event hubs are fully managed service for real time data ingestion for processing, analysing logs in near real time.
+				-> it can be collecting data from various sources including applications, web sites, IoT devices etc.,
+			-> Send to partner solution
+				-> Mainly for sending/streaming the data to third party solutions for log analysis/processing.
 				
-				
+	There is also a feature "Log Stream" to view the logs stream in console almost near real time manner the web server logs and application logs, opening that and loading the web application -> we can view the requests logs in the console within few seconds or near real time manner.			
