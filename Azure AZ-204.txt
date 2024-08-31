@@ -869,4 +869,176 @@ Diagnostic Logs
 			-> Send to partner solution
 				-> Mainly for sending/streaming the data to third party solutions for log analysis/processing.
 				
-	There is also a feature "Log Stream" to view the logs stream in console almost near real time manner the web server logs and application logs, opening that and loading the web application -> we can view the requests logs in the console within few seconds or near real time manner.			
+	There is also a feature "Log Stream" to view the logs stream in console almost near real time manner the web server logs and application logs, opening that and loading the web application -> we can view the requests logs in the console within few seconds or near real time manner.
+
+	In the next sessions we will learn about creating a web app using powershell, bash scripts...
+
+Create WebApp using PowerShell
+-------------------------------
+	-> Suppose we don't know the exact commands to use, then we can use below command with wild card characters
+
+					-> get-command *AzWebApp* (which lists all the commands with AzWebApp
+					
+		List commands that tested:
+		---------------------------
+				-> Start-AzWebApp -ResourceGroupName "new-webapp-rg" -Name "JKavin"
+				-> Stop-AzWebApp -ResourceGroupName "new-webapp-rg" -Name "JKavin"
+				-> Get-AzWebapp (lists all the web apps in the subscription)
+				
+				This get-command can be helpful when we don't know the command or what command to be used, it is also helpful during the exam if we do not have it handy.
+		
+	For creating new web app, we need a resource group, app service plan.
+	
+		Resource group 
+		---------------
+			"New-AzResourceGroup -Name "powershell-webapp-rg" -Location "EastUS" 
+		
+		App Service Plan
+		----------------
+			"New-AzAppServicePlan -ResourceGroupName "powershell-webapp-rg" -Name ps-jkavin -Location "EastUS" -Tier Free"
+		
+		Web APP
+		--------
+			"New-AzWebApp -ResourceGroupName "powershell-webapp-rg" -Name "PS-JKavin" -Location "EastUS" -AppServicePlan ps-jkavin "
+			
+			Created another:
+			-----------------
+			New-AzWebApp -ResourceGroupName "powershell-webapp-rg" -Name "PS-JKavin2" -Location "EastUS" -AppServicePlan ps-jkavin	
+			
+			Now "Get-AzWebApp" lists all the three web apps (jkavin, PS-JKavin, PS-JKavin2)	within the subscription.
+			
+	After creating opened -> Visual studio -> Azure Web App Test Razor.sln -> Publish (Build menu) "
+		Build -> Publish -> Add a publish profile -> Azure (Host application to the cloud) -> Azure App Service (Windows) -> Connect to azure account (gowthamn91@outlook.com/mSftYrSheeftOne2Three) -> select subscription -> select the app service listed where we want our code to be deployed (JKavin) -> Finish 
+	"	
+		-> Publish profile would be created -> Now click Publish -> which starts publishing the code to the cloud App service directory, once done -> restarts web app -> open the browser go the app service (https://ps-jkavin.azurewebsites.net/) you can see our hello world app opens.	
+
+Creating web app using Bash CLI
+--------------------------------
+Resource group:
+				
+			"az group create --location eastus --name cli-rg"	
+			"az group list" (To view the list of resource groups: )
+
+App service plan:
+
+			"az appservice plan create -n cli-appserviceplan -g cli-rg"
+			"az appservice plan list" (list of appservice plans)
+
+			"az appservice plan update -n cli-appserviceplan -g cli-rg --sku f1" (update app service plan command)	
+			
+Web app:
+			"az webapp create -g cli-rg -p cli-appserviceplan -n cli-newwebapp-1"	
+			"az webapp list" 
+			
+			-g : resourcegroup, -n : name, -p: plan
+
+Az webapp up 
+------------
+	There is a command "az webapp up" which does creation of web app and deployment of code in a single line of command, instead of above three commands to create resource group, app service plan, web app seperately.
+		
+		Sample command:
+		---------------
+		
+				" az webapp up --name new-webapp-up-1 --location eastus --sku f1 --html"
+				
+		Name: new-webapp-up-1 (checks if exists, if not then creates, else updates)
+		sku : configure the pricing tier of the plan
+		
+		--html : for creating this web app as static html web app.
+		--resource-group "group name"
+		--plan "cli-appserviceplan"
+		
+		if no resource group, plan mentioned, then it automatically creates a new plan, rg...
+		
+		using mkdir "new folder" - created a new folder
+		cloned a code from azure samples - https://github.com/Azure-Samples/html-docs-hello-world
+		
+		change dir to "new folder" created in bash -> now run "az webapp up" command to create a web app and deploy the code we have cloned in the folder, so it auto creates web app and gets the code deployed in same command.
+		
+		But when I try to open the web app created - 
+		
+			https://new-webapp-up-2.azurewebsites.net/
+			
+		I keep getting - "You do not have permission to view this directory or page."
+
+		It is something needs to be checked....	
+		
+Web App Console:
+----------------
+	Now we are able to create a web app (resource group, app service plan) via Portal, CLI, Powershell... 
+	Also, we know App service is a PaaS service and we do not have control over underlying infrastructure, hence if suppose any issues for eg: 
+	
+		if a specific page is not loading and we want to check if the file does exist in the server or not, how do we do it? Here is the way to check the server configurations, settings, connection strings, files in the wwwroot folder.  
+	
+		"Web App -> Development tools -> Console" 
+		
+	C:\home\site\wwwroot> -- Path where we can view our app files stored/published in the VM of our app service.
+	
+	There is also Advanced Tools option which take us to Kudu service site.
+	
+	What is Kudu service site?
+	---------------------------
+		-> When we create a web app, it has a hidden / background service site called Kudu which has the URL similar to our web app url but with .scm (included) [site control manager]
+		
+			sample: "https://jkavin.scm.azurewebsites.net/"
+	
+	Environment
+	------------	
+	It has several advanced options to view the environment details, app settings, connection strings, System info of the server like processor count, 32/64 bit, OS version, Machine name, CLR version...,
+	
+	Debug Console
+	--------------
+	Debug console -> CLI / Powershell using which we can access the respective file we want to view or make changes, which helps without much overhead admin can make the changes to the server/application configuration easily.
+
+	Process Explorer: 	
+	------------------
+	To view more details about what are the processes currently running and its more details.
+
+	Tools -> has more options to download diagnostics dump (which keeps streaming the logs of our app), Webjobs dashboard, Web hooks, Support...	
+	
+	Site extensions: 
+	-----------------
+		-> Here we get the number of third party tools that can be installed to extend the capability of our app service apart from what is natively provided by Azure.
+		
+Azure Containers
+------------------
+	Basically containers are virtualisation within the OS, meaning for number of containers it uses the same CPU, Memory, OS unlike VMs which has virtualisation at the hardware level, different VMs can have different OS/softwares installed... 
+
+	It also means container cannot have different OS for different instances, it must be same as the host OS. 
+	
+	When we create a web app, in the publish option we can see it can be Code, Static Web App, Container.
+	
+	Likewise there are also other types of container resources. 
+	When we go into Containers category -> we can see various resources like below;
+		-> Azure Kubernetes Service (AKS)
+			-> Orchestrator solution to deploy the apps to containers and load balance, supports auto scaling... 
+		-> Container Instances
+		-> Container Registry
+		-> Web App for Containers
+		-> Batch Service
+		-> Service Fabric Cluster
+		....
+		
+	In this AKS is not on the exam, we will learn about container instances, container registry.
+	
+	->	Container Instances is the simplest form of container, and it is very low effort to create a container, may not be great for production, but for testing purpose we can quick creation of container and use it.
+ 	
+	Lets create a simple container instance -> Provide the resource group, location, SKU, Image source (Quick start, Azure Container registry, Other registry)
+	
+	With Quick start image selected, we can chose the container image from already stored sample image templates.
+		-> Hello world image selected.
+		
+	DNS name label: mytestcontainer 
+		
+	Rest of the options go with default. Review and create, ACI created.
+	FQDN: mytestcontainer.gfc0cdd2g2gzh3fz.eastus.azurecontainer.io (Fully Qualified Domain Name)
+	By loading the above FQDN - we can see a sample container instance up and running.
+	
+	Next session we will see about deploying our custom application to ACI and testing...
+	
+		
+			
+			
+			
+			
+				
