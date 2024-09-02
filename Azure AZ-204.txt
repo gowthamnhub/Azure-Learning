@@ -1034,9 +1034,95 @@ Azure Containers
 	FQDN: mytestcontainer.gfc0cdd2g2gzh3fz.eastus.azurecontainer.io (Fully Qualified Domain Name)
 	By loading the above FQDN - we can see a sample container instance up and running.
 	
-	Next session we will see about deploying our custom application to ACI and testing...
+			with the message "Welcome to Azure Container Instances"
+			
+	Another use of Container Instances is it can act as a burstable scaling feature for AKS, so whenever the demand/spike arise which is not able to be handled by AKS cluster with its current capacity, it can offload some of its workload to ACI by integrating with it.
+
+	-> So it helps in quickly provisioning the container instance and serve the SPIKE, if at all AKS cluster has to be scale in/out then it can take some more time than what ACI takes and also ACI is fully managed, AKS is not managed by platform, that we have to take care.
 	
+	-> it can reduce from cost perspective also.
 		
+	Next session we will learn about deploying our custom application to ACI and testing...
+	
+	Container image - is a lightweight, standalone, executable package that includes everything  needed to run a piece of software.
+	
+		-> This package contains the application code, libraries, environment variables, configuration files and all dependencies.
+		-> Essentially a container image is a snapshot of container's file system at a particular point in time.
+		
+	Container registry - is a service or repository that stores, manages container images, these images are essential components of a containerized applications, and a container registry provides a centralized place to store, share and distribute them across different environments.	
+	
+	Since this is a centralized directory/repository from here the container can be deployed tom different environments development, testing, any other container hosting services ...
+	
+	Ok lets create a container registry and try to deploy some container apps to it and using that we will try to deploy the application to different environments.
+	
+	Go to create resource -> Container registry -> Resource group, Location, CR name
+	Then we can choose the pricing tier/service tier (SKUs - software keeping units) - 
+				-> Basic
+				-> Standard
+				-> Premium
+				
+		Based on the tier, cost, included storage, system's throughput varies.
+
+		Networking: 
+				-> Public access (connect to this registry via public IP)
+				-> Private (recommended) but enabled only for Premium plans
+		Encryption:
+				-> Enabled only for premium plans, helps in encrypting the data that we have in registry, code, other artifacts, data when they are pushed to registry, and decrypted when they are pulled out of registry.
+	
+	Review + Create ->  Ok now the Container Registry is created 
+					-> jkavincr
+					-> jkavincr.azurecr.io
+
+		Container registry with nothing in it is not useful for anyone.
+		So we have to deploy container images(compiled, build, ready to deploy) to it. These are called repositories which is under "Services" in the Container Registry.
+
+	Lets try pushing/publishing our sample web app that we created earlier as a container registry.
+		-> Couple of things we need to do before we are able to publish our code as container image.
+					-> "Install Docker Desktop"
+					-> Docker support in Visual Studio 
+			
+		"Docker" is the industry standard for image container formats, so we need to take our web app and turn it into docker image. That can be done with the help of "Docker Desktop".
+
+	Installed Docker Desktop -> Opened it from hidden icons in taskbar -> Open it -> start it 
+
+		"currently docker engine is running status"
+		
+	Go to visual studio -> open project -> right click project -> Add -> Docker support -> it adds the Docker file to the project -> which contains the .csproj, dll details of the container.
+
+	Now we want to make this a container image, we can use below commands in CMD to see if there are any container running, container images exist.
+				1. docker ps (list running containers) ps: process status
+				2. docker images (list all the container images stored on local docker host)
+		
+		Run the solution with "Docker" option in target which compiles and builds the app to a container image.
+		
+		Now the publishing process -> Build -> Publish -> Choose Azure -> Azure Container Registry -> Select the ACR -> Finish -> Then publish.
+		
+		Facing some issues while publishing to ACR -> updated the visual studio, resolved it.
+		Once published, next session we will learn about how to deploy ACI app from ACR.
+		
+	Now the container published to ACR. Now I can see the published container in the ACR repositories.
+
+Deploy an ACI from ACR
+-----------------------
+	-> Create ACI -> This time image select Azure Container Registry option -> select registry that is created (jkavincr) -> image tag (latest) -> Provide the DNS name label -> Review + Create 
+
+	Finally able to run the container app with this;
+		http://aci-test-2.aph9cvb0ahefepar.eastus.azurecontainer.io:8080/
+		
+	So we have to see what are the ports that are exposed from Docker file like below;
+				"
+					EXPOSE 8080
+					EXPOSE 8081
+				"
+		And in our ACI, we have to have these ports configured as well for listening, then only this is working as expected. 
+		Also, in our .csproj file have this line added;
+			
+			"	<ContainerUser>root</ContainerUser>"(check below article)
+		https://learn.microsoft.com/en-us/answers/questions/1483906/running-net-8-azure-container-instance-app-as-root
+	
+	Logs can be checked in ACI -> Settings -> Containers -> Logs tab (it gives info, errors which ports the app is listening to)
+
+In the next section, we will see about deploying web app from ACR.	
 			
 			
 			
