@@ -1139,7 +1139,56 @@ In the next section, we will see about deploying our container image as web app 
 	ACI is a lightweight, stateless, temporary tasks, Web app is suited for full fledged web applications with necessary scaling, load balancing, advance featured provided by platform.	
 		
 			
+Function APP
+-------------
+	-> This is basically the service offered by Azure which provides the platform to run a small piece of code or functions which can be related or serve different purpose, and executes them in a serverless environment without having to first create a VM, Container, Web App.
+
+	-> So this can hose multiple functions (piece of code) and executes them based on the event driven (like http trigger, database change, message from queue, scheduled timer / task).
+	-> We absolutely do not worry about the underlying infrastructure where /how the code runs.
+	-> Scaling is auto taken care by platform.
+	-> This also comes with different pricing plans 
+		
+		-> Consumption based - pay per request
+		-> Flex consumption - Get high scalablility with compute choices, virtual networking, pay as you go billing.
+		-> App service - Fixed monthly plan
+		-> Functions Premium - Deploy multiple function apps on the same plan with event driven scaling.
+		-> Container Apps environment - Host function apps with other containerized microservices and pay for compute capacity
+
+	-> We can chose the runtime stack of the code that we want to host in the function app.
+	-> We would need to have a storage account as well to store deployment files, manage triggers, state so that it know when to trigger the function, track function execution, without it won't be able to handle durable workflows effectively.
+
+		With rest of the fields keeping default, Review + Create -> Function App - a container for storing / deploying our functions to cloud would be created. 
+		
+		Next would be to Create our first function and deploy to this container and test it.
 			
-			
-			
+	Once function app is created -> open it -> we can see the basic details RG, Status, URL, Location, OS ....
+
+	There are 4 tabs (Functions, Metrics, Properties, Notifications)
+	
+	In this Functions is the place where we can create our function and there are different options as well for creating function;
+	
+		-> Using Portal
+		-> VS Code Desktop
+		-> Other editors or CLI
+		
+	For this example, lets try using portal -> There are multiple templates available to create a function like Http trigger, Timer trigger, Azure storage queue trigger, Azure service bus queue trigger, Azure service bus topic trigger, Send Grid .... like wise many.
+
+	Trigger -> Which invokes the function to execute.
+
+	-> Http trigger - function gets executed when it receives an http request based on the data in the query string or body.
+	-> Timer trigger - executes function on specified schedule (CRON expr)
+	-> Azure storage queue - function runs whenever a message is added to azure storage queue.	
+	-> Azure service bus queue - function runs whenever a message is added to azure service bus queue.	
+	-> Azure service bus topic - function runs whenever a message is added to azure service bus topic.
+	-> Send Grid - function that sends a confirmation e-mail when a new item is added to a particular queue.
+
+	We will choose Http trigger -> provide name, authorization level (function, anonymous, admin).
+
+	Apart from triggers, there is also something called Bindings (input, output), which we can bind to our function so that if it needs to read something from somewhere for eg: Azure blob storage, if the binding is established/configured it is auto handled by the platform, we do not need to write any custom logic to do that, and we need to output a http response, it is also auto handled if configured bindings.
+	
+	https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings?tabs=isolated-process%2Cpython-v2&pivots=programming-language-csharp#supported-bindings
+	
+	Our FirstHttpFunction is created, next session we will run our testing of the FirstHttpFunction.
+		
+		
 				
