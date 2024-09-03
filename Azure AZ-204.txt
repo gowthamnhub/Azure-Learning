@@ -1122,7 +1122,22 @@ Deploy an ACI from ACR
 	
 	Logs can be checked in ACI -> Settings -> Containers -> Logs tab (it gives info, errors which ports the app is listening to)
 
-In the next section, we will see about deploying web app from ACR.	
+In the next section, we will see about deploying our container image as web app from ACR.	
+
+	What does this mean? in the previous section we deployed our container image as ACI (container instance) from ACR, but in this we will create a web app and deploy the container image from ACR to it and run it as web app.
+	
+	Create ACR (basic for reduced cost) -> Open Visual studio (app) -> Build as docker -> Publish the application as a Docker image to ACR -> Publish.
+
+		-> Once published -> Go to corresponding ACR (jkavincr) -> Services -> Repositories -> Check if our App image exists.
+		
+		-> Now create a web app -> Publish  (choose container) -> Container tab -> Image source as ACR -> Other options keep default -> Review + Create
+		
+		Open the app -> https://jkavin-web-app.azurewebsites.net/ 
+		
+		BOOOOOMMMMMMMMM its up and running the same container image we have deployed to a web app!!!!!!!!!!
+		
+	ACI is a lightweight, stateless, temporary tasks, Web app is suited for full fledged web applications with necessary scaling, load balancing, advance featured provided by platform.	
+		
 			
 			
 			
